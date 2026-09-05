@@ -1,0 +1,9 @@
+{
+  "name": "rfl-history-book",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RFL History Book — season archive with a database-backed admin panel.",
+  "engines": {
+    "node": ">=18"
+  }
+}

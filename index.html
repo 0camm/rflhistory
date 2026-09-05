@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#08080f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RFL History">
+<title>RFL History Book</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#7c5cff;--red2:#a78bfa;--red-dim:rgba(124,92,255,.09);--red-mid:rgba(124,92,255,.22);--red-edge:rgba(124,92,255,.5);
+  --bg:#0f0f1a;--s1:#151524;--s2:#1a1a2c;--s3:#202035;--s4:#28283f;
+  --b:rgba(255,255,255,.10);--b2:rgba(255,255,255,.055);--b3:rgba(255,255,255,.16);
+  --mu:#8888a8;--mu2:#5c5c7a;
+  --tx:#f2f2fa;--tx2:#b4b4d0;
+  --gr:#18d464;--gr-d:rgba(24,212,100,.09);
+  --am:#f5a623;--am-d:rgba(245,166,35,.09);
+  --bl:#5b9cf6;--bl-d:rgba(91,156,246,.09);
+  --win:#3de87a;--lose:#f06070;
+  --gold:#c9a84c;--gold-hi:#e0c06a;
+  --gold-dim:rgba(201,168,76,.12);--gold-border:rgba(201,168,76,.28);--gold-mid:rgba(201,168,76,.3);
+  --pur:#c084fc;--pur-d:rgba(192,132,252,.09);--pur-border:rgba(192,132,252,.25);
+  --cy:#22d3ee;--cy-d:rgba(34,211,238,.09);--cy-border:rgba(34,211,238,.22);
+  --pink:#f472b6;--pink-d:rgba(244,114,182,.09);--pink-border:rgba(244,114,182,.22);
+  --silver:#a0a0b8;--silver-d:rgba(160,160,184,.09);--silver-border:rgba(160,160,184,.25);
+  --or:#fb923c;--or-d:rgba(251,146,60,.09);--or-border:rgba(251,146,60,.25);
+  --shadow-sm:0 2px 10px rgba(0,0,0,.25);
+  --shadow-md:0 10px 32px rgba(0,0,0,.45);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.55);
+  --glass-bg:rgba(26,26,44,.58);
+  --glass-bg-soft:rgba(26,26,44,.40);
+  --glass-border:rgba(255,255,255,.12);
+  --glass-blur:18px;
+  --glass-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:
+    radial-gradient(1100px 620px at 12% -8%, rgba(99,70,240,.13), transparent 55%),
+    radial-gradient(900px 560px at 100% 0%, rgba(91,156,246,.08), transparent 50%),
+    var(--bg);color:var(--tx);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh;-webkit-font-smoothing:antialiased;width:100%;max-width:100vw;overflow-x:hidden}
+button,input,select{font-family:inherit}
+a{color:inherit}
+::selection{background:var(--gold-mid,rgba(201,168,76,.35));color:#fff}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;border-radius:4px}
+button,[role="button"]{touch-action:manipulation}
+img{max-width:100%}
+.sbar{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:9px 20px;width:100%}
+.sbar-sync{font-size:11px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.live-chip{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.live-chip.on{color:var(--gr)}
+.ldot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.live-chip.on .ldot{animation:blink 1.8s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.hero{padding:28px 20px 24px;position:relative;border-bottom:1px solid var(--glass-border);background:var(--glass-bg-soft);backdrop-filter:blur(var(--glass-blur)) saturate(150%);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(150%);width:100%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:180px;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.hero-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:.02em;line-height:.92;color:#fff}
+.hero-h1 em{color:var(--gold-hi);font-style:normal}
+.hero-sub{margin-top:8px;font-size:11px;color:var(--mu);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.hdot{width:3px;height:3px;border-radius:50%;background:var(--mu2);flex-shrink:0}
+.hero-stats-strip{display:flex;align-items:stretch;background:var(--s2);border:1px solid var(--b);border-radius:10px;overflow:hidden;margin-top:16px;width:fit-content}
+.hs-item{padding:10px 20px;display:flex;flex-direction:column;align-items:center;gap:3px;border-right:1px solid var(--b);transition:background .15s}
+.hs-item:last-child{border-right:none}
+.hs-item:hover{background:var(--s3)}
+.hs-num{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;color:var(--gold-hi)}
+.hs-lbl{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.hero-key{display:flex;flex-wrap:wrap;gap:5px;align-self:flex-end;max-width:100%}
+.kc{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid var(--glass-border);cursor:pointer;transition:border-color .15s,background .15s}
+.kc:hover{border-color:rgba(255,255,255,.12);background:var(--s3)}
+.kc.active{border-color:var(--gold-border);background:var(--gold-dim)}
+.kc-pip{width:3px;height:13px;border-radius:2px;flex-shrink:0}
+.kc-pip.seasons{background:var(--gold-hi)}.kc-pip.records{background:var(--bl)}.kc-pip.hof{background:var(--gr)}.kc-pip.players{background:var(--red)}.kc-pip.admin{background:var(--am)}.kc-pip.allstar{background:var(--pink)}
+.kc-code{font-weight:700;color:var(--tx2);font-family:'JetBrains Mono',monospace;font-size:10px}
+.kc-lbl{color:var(--mu);font-size:10px}
+.main{padding:24px 20px 72px;width:100%}
+.sec-hd{margin-bottom:14px;width:100%}
+.sec-hd-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.08em;color:#fff}
+.sec-ct{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);background:var(--s3);border:1px solid var(--b);border-radius:20px;padding:2px 9px}
+.sec-rule{flex:1;height:1px;background:var(--b2)}
+.filters{display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%}
+.fc{background:var(--s2);border:1px solid var(--b);border-radius:7px;color:var(--tx);font-size:12px;font-family:'Inter',sans-serif;padding:6px 10px;outline:none;transition:border-color .15s;min-width:0}
+.fc::placeholder{color:var(--mu)}
+.fc:focus{border-color:var(--gold-border)}
+.fc-search{flex:1;min-width:80px;max-width:220px}
+select.fc{padding-right:24px;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath fill='%2352526a' d='M0 0l4.5 5L9 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-color:var(--s2)}
+.ht-wrap{width:100%;background:var(--glass-bg-soft);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:13px;overflow:hidden;position:relative}
+.ht-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent 50%)}
+.ht-hd{display:grid;grid-template-columns:34px 1fr 100px 120px 80px 80px 100px;padding:8px 14px;background:var(--s2);border-bottom:1px solid var(--b);width:100%}
+.ht-hd span{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.ht-hd span:nth-child(1){text-align:center}
+.ht-hd span:nth-child(3),.ht-hd span:nth-child(4),.ht-hd span:nth-child(5),.ht-hd span:nth-child(6),.ht-hd span:nth-child(7){text-align:center}
+.hr{display:grid;grid-template-columns:34px 1fr 100px 120px 80px 80px 100px;padding:9px 14px;align-items:center;border-bottom:1px solid var(--b2);position:relative;transition:background .12s;cursor:pointer;width:100%}
+.hr:last-child{border-bottom:none}
+.hr:hover{background:rgba(255,255,255,.02)}
+.hr::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.hr.era-1::before{background:var(--am)}.hr.era-2::before{background:var(--gr)}.hr.era-3::before{background:var(--bl)}.hr.era-4::before{background:var(--gold)}
+.hn{font-size:11px;color:var(--mu2);text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700}
+.hm{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
+.hm-logo{width:20px;height:20px;object-fit:contain;flex-shrink:0;opacity:.85}
+.hm-nolog{width:20px;height:20px;border-radius:50%;background:var(--s3);flex-shrink:0}
+.hm-champ{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.05em;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-sub{font-size:10px;color:var(--mu);white-space:nowrap}
+.hs{text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--win)}
+.hdef{text-align:center;font-size:11px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hser{text-align:center;font-size:10px;color:var(--mu);white-space:nowrap;font-family:'JetBrains Mono',monospace}
+.hdate{text-align:center;font-size:10px;color:var(--mu);white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:3px}
+.hfmvp{text-align:center;font-size:10px;color:var(--pur);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.harrow{color:var(--gold);font-size:10px;opacity:0;transform:translateX(-3px);transition:opacity .14s,transform .14s}
+.hr:hover .harrow{opacity:1;transform:none}
+.hist-empty{padding:40px 20px;text-align:center;font-size:13px;color:var(--mu)}
+.pager{display:flex;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap;gap:8px;width:100%}
+.pg-info{font-size:11px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.pg-btns{display:flex;align-items:center;gap:3px;flex-wrap:wrap}
+.pb{background:transparent;border:1px solid var(--b);border-radius:5px;color:var(--tx2);font-size:11px;font-family:'Inter',sans-serif;font-weight:500;padding:4px 10px;cursor:pointer;transition:background .1s,border-color .1s,color .1s;touch-action:manipulation}
+.pb:hover:not(:disabled){background:var(--s3);border-color:rgba(255,255,255,.11);color:#fff}
+.pb:disabled{opacity:.28;cursor:default}
+.pb.cur{background:var(--gold);border-color:var(--gold);color:#07070c;font-weight:700}
+.pb-ellip{color:var(--mu);font-size:11px;padding:0 2px}
+.pg-jump{display:flex;align-items:center;gap:5px}
+.pg-jlbl{font-size:11px;color:var(--mu)}
+.pg-jin{background:var(--s3);border:1px solid var(--b);border-radius:5px;color:var(--tx);font-size:11px;font-family:'JetBrains Mono',monospace;width:40px;padding:4px 6px;text-align:center;outline:none}
+.pg-jin:focus{border-color:var(--gold-border)}
+.records-grid-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--b);border:1px solid var(--b);border-radius:12px;overflow:hidden}
+.rec-card{background:var(--s1);padding:20px;position:relative;overflow:hidden;transition:background .15s}
+.rec-card:hover{background:var(--s2)}
+.rec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:.7}
+.rec-stat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+.rec-val{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:var(--gold-hi);margin-bottom:6px}
+.rec-holder{font-size:13px;color:var(--tx);font-weight:500;margin-bottom:2px}
+.rec-team{font-size:10px;color:var(--mu)}
+.hof-inductees{background:var(--s1);border:1px solid var(--b);border-radius:12px;overflow:hidden;position:relative;margin-top:16px;width:100%}
+.hof-inductees::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent 50%)}
+.hof-ind-hd{display:grid;grid-template-columns:30px 1fr 60px 70px 60px 70px 90px 1fr;padding:8px 14px;background:var(--s2);border-bottom:1px solid var(--b)}
+.hof-ind-hd span{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.hof-ind-hd span:nth-child(1){text-align:center}
+.hof-ind-hd span:nth-child(3),.hof-ind-hd span:nth-child(4),.hof-ind-hd span:nth-child(5),.hof-ind-hd span:nth-child(6),.hof-ind-hd span:nth-child(7){text-align:center}
+.hof-ind-row{display:grid;grid-template-columns:30px 1fr 60px 70px 60px 70px 90px 1fr;padding:9px 14px;align-items:center;border-bottom:1px solid var(--b2);position:relative;transition:background .12s;cursor:pointer;width:100%}
+.hof-ind-row:last-child{border-bottom:none}
+.hof-ind-row:hover{background:rgba(255,255,255,.02)}
+.hof-ind-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.hof-ind-row.tier-hof::before{background:var(--gold)}
+.hof-ind-row.tier-ring-of-honor::before{background:var(--silver)}
+.hof-rn{font-size:10px;color:var(--mu2);text-align:center;font-family:'JetBrains Mono',monospace}
+.hof-name{font-size:12px;font-weight:600;color:#fff}
+.hof-name-sub{font-size:10px;color:var(--mu);margin-top:1px}
+.hof-rings{text-align:center;font-size:12px;color:var(--gold-hi);font-family:'JetBrains Mono',monospace;font-weight:700}
+.hof-mvps{text-align:center;font-size:12px;color:var(--win);font-family:'JetBrains Mono',monospace;font-weight:700}
+.hof-fmvps{text-align:center;font-size:12px;color:var(--pur);font-family:'JetBrains Mono',monospace;font-weight:700}
+.hof-score-cell{text-align:center;font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:700}
+.hof-awards-cell{font-size:10px;color:var(--mu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hof-badge-wrap{display:inline-flex;gap:4px;flex-wrap:wrap}
+.hof-badge{display:inline-flex;font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 5px;border-radius:3px;white-space:nowrap}
+.hof-badge.gold{background:var(--gold-dim);color:var(--gold-hi);border:1px solid var(--gold-border)}
+.hof-badge.green{background:var(--gr-d);color:var(--gr);border:1px solid rgba(24,212,100,.18)}
+.hof-badge.blue{background:var(--bl-d);color:var(--bl);border:1px solid rgba(91,156,246,.18)}
+.hof-badge.purple{background:var(--pur-d);color:var(--pur);border:1px solid var(--pur-border)}
+.hof-badge.cyan{background:var(--cy-d);color:var(--cy);border:1px solid var(--cy-border)}
+.hof-badge.pink{background:var(--pink-d);color:var(--pink);border:1px solid var(--pink-border)}
+.hof-badge.silver{background:var(--silver-d);color:var(--silver);border:1px solid var(--silver-border)}
+.hof-badge.orange{background:var(--or-d);color:var(--or);border:1px solid var(--or-border)}
+.hof-harrow{color:var(--gold);font-size:10px;opacity:0;transform:translateX(-3px);transition:opacity .14s,transform .14s;margin-left:4px}
+.hof-ind-row:hover .hof-harrow{opacity:1;transform:none}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--b);border:1px solid var(--b);border-radius:12px;overflow:hidden}
+.player-card{background:var(--s1);padding:16px;position:relative;overflow:hidden;transition:background .15s;cursor:pointer}
+.player-card:hover{background:var(--s2)}
+.player-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.7}
+.player-card.tier-elite::before{background:var(--gold)}
+.player-card.tier-great::before{background:var(--gr)}
+.player-card.tier-good::before{background:var(--bl)}
+.player-card.tier-role::before{background:var(--mu2)}
+.pc-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.03em;color:#fff;margin-bottom:4px}
+.pc-seasons{font-size:10px;color:var(--mu);margin-bottom:10px}
+.pc-stats{display:flex;gap:8px;flex-wrap:wrap}
+.pc-stat{display:flex;flex-direction:column;align-items:center;background:var(--s3);border:1px solid var(--b2);border-radius:5px;padding:4px 8px;min-width:34px}
+.pc-sv{font-size:14px;font-weight:700;color:#fff;line-height:1;font-family:'JetBrains Mono',monospace}
+.pc-sl{font-size:8px;color:var(--mu);letter-spacing:.08em;margin-top:2px}
+.pc-badges{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px}
+.mbg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:12px;opacity:0;pointer-events:none;transition:opacity .2s}
+.mbg.open{opacity:1;pointer-events:all}
+.modal{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur)) saturate(150%);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(150%);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;width:100%;max-width:860px;max-height:92vh;display:flex;flex-direction:column;transform:translateY(12px) scale(.97);transition:transform .2s;box-shadow:var(--glass-shadow);position:relative}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent 60%);z-index:2}
+.mbg.open .modal{transform:none}
+.mhd{padding:16px 20px;background:var(--s2);border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;flex-wrap:wrap}
+.mmatchup{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mchamp-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#fff}
+.mchamp-rec{font-size:11px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.msep{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--mu2)}
+.mdef-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:var(--tx2)}
+.mdef-rec{font-size:11px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.mmeta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.mbadge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:var(--gold-dim);color:var(--gold-hi);border:1px solid var(--gold-border)}
+.mseason{font-size:10px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.mclose{background:var(--s3);border:1px solid var(--b);cursor:pointer;color:var(--mu);font-size:16px;line-height:1;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;transition:all .13s;flex-shrink:0}
+.mclose:hover{color:#fff;background:var(--s4);border-color:rgba(255,255,255,.12)}
+.mbody{overflow-y:auto;flex:1;padding:20px;display:flex;flex-direction:column;gap:18px}
+.minfo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.icard{background:var(--s2);border:1px solid var(--b);border-radius:10px;padding:14px 15px}
+.ilbl{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
+.award-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--b2);font-size:12px}
+.award-row:last-child{border-bottom:none}
+.award-lbl{color:var(--mu);font-size:10px;letter-spacing:.03em;white-space:nowrap}
+.award-win{color:var(--tx);font-weight:500;text-align:right}
+.award-win.fmvp{color:var(--pur)}
+.award-win.stat{color:var(--cy)}
+.allrpl-tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.at-btn{background:transparent;border:1px solid var(--b);color:var(--mu);border-radius:4px;padding:3px 8px;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .15s}
+.at-btn:hover{color:var(--tx);border-color:rgba(255,255,255,.18)}
+.at-btn.active{color:var(--gold-hi);background:var(--gold-dim);border-color:var(--gold-border)}
+.allrpl-tbl{width:100%;border-collapse:collapse}
+.allrpl-tbl tr{border-bottom:1px solid var(--b2)}
+.allrpl-tbl tr:last-child{border-bottom:none}
+.allrpl-tbl td{padding:4px 4px;font-size:12px}
+.allrpl-tbl td:first-child{color:var(--mu);font-size:10px;font-weight:600;letter-spacing:.06em;width:34px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.stat-item .stat-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:2px}
+.stat-item .stat-val{font-size:13px;color:var(--tx);font-weight:500}
+.chip-list{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:var(--s3);border:1px solid var(--b);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:500;color:var(--mu);letter-spacing:.03em}
+.toty-row{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:6px;padding:6px 12px;font-size:12px}
+.toty-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.9}
+.toty-val{color:var(--gold-hi);font-weight:600}
+.fmvp-row{display:inline-flex;align-items:center;gap:10px;background:var(--pur-d);border:1px solid var(--pur-border);border-radius:6px;padding:6px 12px;font-size:12px}
+.fmvp-row-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pur);opacity:.9}
+.fmvp-row-val{color:var(--pur);font-weight:600}
+.prf-name{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.03em;color:#fff;line-height:1}
+.prf-sub{font-size:11px;color:var(--mu);margin-top:4px}
+.prf-hof-badge{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:5px;padding:3px 9px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);margin-top:6px}
+.prf-hof-badge.roh{background:var(--silver-d);border-color:var(--silver-border);color:var(--silver)}
+.prf-stat-row{display:flex;flex-wrap:wrap;gap:8px}
+.prf-big-stat{display:flex;flex-direction:column;align-items:center;background:var(--s3);border:1px solid var(--b);border-radius:8px;padding:10px 16px;min-width:52px}
+.prf-bsv{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;color:var(--gold-hi)}
+.prf-bsv.pur{color:var(--pur)}
+.prf-bsv.cy{color:var(--cy)}
+.prf-bsv.pink{color:var(--pink)}
+.prf-bsv.or{color:var(--or)}
+.prf-bsl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-top:3px}
+.season-log-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.season-log-tbl thead tr{background:var(--s3)}
+.season-log-tbl th{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding:6px 8px;text-align:center;white-space:nowrap}
+.season-log-tbl th:first-child{text-align:left}
+.season-log-tbl td{padding:6px 8px;text-align:center;border-top:1px solid var(--b2);font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;color:var(--tx2)}
+.season-log-tbl td:first-child{text-align:left;font-family:'Inter',sans-serif;color:var(--tx);font-weight:500}
+.season-log-tbl tbody tr:hover{background:rgba(255,255,255,.012)}
+.tl-award{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.06em;padding:1px 4px;border-radius:3px;margin:1px}
+.tl-award.major{background:var(--gold-dim);color:var(--gold-hi);border:1px solid var(--gold-border)}
+.tl-award.minor{background:var(--gr-d);color:var(--gr);border:1px solid rgba(24,212,100,.18)}
+.tl-award.allrpl{background:var(--bl-d);color:var(--bl);border:1px solid rgba(91,156,246,.18)}
+.tl-award.ring{background:rgba(240,185,60,.15);color:var(--gold-hi);border:1px solid var(--gold-border)}
+.tl-award.fmvp{background:var(--pur-d);color:var(--pur);border:1px solid var(--pur-border)}
+.tl-award.stat{background:var(--cy-d);color:var(--cy);border:1px solid var(--cy-border)}
+.tl-award.peak{background:var(--or-d);color:var(--or);border:1px solid var(--or-border)}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.stat-awards-section{margin-top:8px;padding-top:8px;border-top:1px solid var(--b2)}
+.stat-awards-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cy);margin-bottom:6px}
+.hof-score-bar{height:4px;border-radius:2px;background:var(--s3);margin-top:4px;overflow:hidden}
+.hof-score-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.hof-tier-badge{display:inline-flex;align-items:center;gap:4px;font-size:8px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:2px 6px;border-radius:3px;white-space:nowrap}
+.hof-tier-badge.hof{background:rgba(240,185,60,.2);color:var(--gold-hi);border:1px solid var(--gold-border)}
+.hof-tier-badge.ring-of-honor{background:var(--silver-d);color:var(--silver);border:1px solid var(--silver-border)}
+.hof-tier-badge.not-eligible{background:var(--s3);color:var(--mu);border:1px solid var(--b)}
+.hof-section-divider{padding:8px 14px;background:var(--s3);border-bottom:1px solid var(--b);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.hof-section-divider.roh{color:var(--silver)}
+.allstar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--b);border:1px solid var(--b);border-radius:12px;overflow:hidden;margin-top:12px}
+.allstar-card{background:var(--s1);padding:16px;position:relative;overflow:hidden;transition:background .15s;cursor:pointer}
+.allstar-card:hover{background:var(--s2)}
+.allstar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--pink);opacity:.8}
+.allstar-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.03em;color:#fff;margin-bottom:6px}
+.allstar-stats{display:flex;gap:6px;flex-wrap:wrap}
+.allstar-stat{display:flex;flex-direction:column;align-items:center;background:var(--s3);border:1px solid var(--b2);border-radius:5px;padding:3px 7px;min-width:30px}
+.allstar-sv{font-size:13px;font-weight:700;line-height:1;font-family:'JetBrains Mono',monospace}
+.allstar-sl{font-size:8px;color:var(--mu);letter-spacing:.07em;margin-top:2px}
+.allstar-leader-tbl{width:100%;border-collapse:collapse}
+.allstar-leader-tbl tr{border-bottom:1px solid var(--b2)}
+.allstar-leader-tbl tr:last-child{border-bottom:none}
+.allstar-leader-tbl td{padding:8px 12px;font-size:12px}
+.allstar-leader-tbl td:first-child{width:24px;text-align:center;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--mu2)}
+.allstar-leader-tbl td:nth-child(2){color:var(--tx);font-weight:500}
+.allstar-leader-tbl td:last-child{text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700}
+.career-rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--b);border:1px solid var(--b);border-radius:12px;overflow:hidden}
+.career-rec-card{background:var(--s1);padding:16px;position:relative;overflow:hidden;transition:background .15s}
+.career-rec-card:hover{background:var(--s2)}
+.career-rec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.7}
+.career-rec-card.type-career::before{background:var(--cy)}
+.career-rec-card.type-season::before{background:var(--am)}
+.career-rec-stat{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.career-rec-val{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;margin-bottom:4px}
+.career-rec-val.career{color:var(--cy)}
+.career-rec-val.season{color:var(--am)}
+.career-rec-holder{font-size:12px;color:var(--tx);font-weight:500;margin-bottom:2px}
+.career-rec-note{font-size:10px;color:var(--mu)}
+.admin-panel{display:grid;grid-template-columns:200px 1fr;gap:16px;min-height:400px}
+.admin-sidebar{display:flex;flex-direction:column;gap:4px}
+.admin-nav-btn{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:7px;background:transparent;border:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--mu);transition:all .14s;text-align:left;width:100%}
+.admin-nav-btn:hover{background:var(--s2);color:var(--tx);border-color:var(--b)}
+.admin-nav-btn.active{background:var(--gold-dim);color:var(--gold-hi);border-color:var(--gold-border)}
+.admin-content{background:var(--s1);border:1px solid var(--b);border-radius:11px;overflow:hidden}
+.admin-pane{padding:20px;display:none}
+.admin-pane.active{display:block}
+.admin-section-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#fff;margin-bottom:14px}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding:7px 10px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b)}
+.admin-table td{padding:8px 10px;font-size:12px;border-bottom:1px solid var(--b2);color:var(--tx2)}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table td:first-child{color:var(--tx);font-weight:500}
+.admin-btn{background:var(--s3);border:1px solid var(--b);border-radius:5px;color:var(--tx2);font-size:10px;font-family:'Inter',sans-serif;font-weight:600;padding:3px 8px;cursor:pointer;transition:all .13s}
+.admin-btn:hover{background:var(--s4);color:var(--tx);border-color:rgba(255,255,255,.12)}
+.admin-btn.danger{color:var(--lose)}
+.admin-btn.danger:hover{background:rgba(240,96,112,.1);border-color:rgba(240,96,112,.3)}
+.admin-btn.success{color:var(--gr)}
+.admin-btn.amber{color:var(--am)}
+.admin-stat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:16px}
+.admin-stat-card{background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:12px;text-align:center}
+.admin-stat-card-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold-hi);line-height:1}
+.admin-stat-card-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-top:3px}
+.hof-candidate-row{display:grid;grid-template-columns:1fr 80px 120px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--b2);font-size:12px}
+.hof-candidate-row:last-child{border-bottom:none}
+.candidate-hd{background:var(--s2);border-bottom:1px solid var(--b)}
+.candidate-hd span{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+#toasts{position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column-reverse;gap:7px;z-index:9999;pointer-events:none;width:min(300px,calc(100vw - 32px))}
+.toast{background:var(--s3);border:1px solid var(--b);border-left:3px solid var(--gold);border-radius:9px;padding:10px 14px;font-size:13px;color:#fff;box-shadow:0 10px 36px rgba(0,0,0,.6);pointer-events:all;animation:tIn .2s ease;word-break:break-word}
+.toast.green{border-left-color:var(--gr)}.toast.amber{border-left-color:var(--am)}.toast.out{animation:tOut .2s ease forwards}
+@keyframes tIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes tOut{from{opacity:1}to{opacity:0;transform:translateY(-5px)}}
+.admin-overlay{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+.admin-overlay.show{display:flex}
+.admin-modal{background:var(--s1);border:1px solid var(--b);border-radius:12px;padding:24px;width:100%;max-width:400px;position:relative}
+.admin-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent 60%)}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;color:#fff;margin-bottom:18px}
+.form-group{margin-bottom:10px}
+.form-label{display:block;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.form-input{width:100%;background:var(--s2);border:1px solid var(--b);border-radius:6px;padding:8px 12px;color:var(--tx);font-family:'Inter',sans-serif;font-size:12px;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--gold-border)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.awards-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.btn{border:none;border-radius:6px;padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:opacity .2s}
+.btn-gold{background:var(--gold);color:#07070c}.btn:hover{opacity:.78}
+.btn-cancel{background:transparent;border:1px solid var(--b);color:var(--mu);border-radius:6px;padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:border-color .2s}
+.btn-cancel:hover{border-color:rgba(255,255,255,.18);color:var(--tx)}
+.err-box{background:var(--am-d);border:1px solid rgba(245,166,35,.22);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--am);margin-bottom:12px;display:none}
+.err-box.show{display:block}
+.divider{border:none;border-top:1px solid var(--b2);margin:14px 0}
+.add-overlay{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:12px}
+.add-overlay.show{display:flex}
+.add-modal{background:var(--s1);border:1px solid var(--b);border-radius:12px;padding:24px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;position:relative}
+.add-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent 60%)}
+.admin-bar{display:none;margin:0 20px 12px;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:8px;flex-wrap:wrap}
+.admin-bar.on{display:flex}
+.admin-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi)}
+.btn-row{display:flex;gap:8px}
+.btn-outline{background:transparent;border:1px solid var(--b);color:var(--mu)}
+.hof-breakdown{background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:12px;margin-top:8px}
+.hof-breakdown-title{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.hof-breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px;border-bottom:1px solid var(--b2)}
+.hof-breakdown-row:last-child{border-bottom:none}
+.hof-breakdown-label{color:var(--tx2)}
+.hof-breakdown-pts{font-family:'JetBrains Mono',monospace;font-weight:700}
+.peak-badge{display:inline-flex;align-items:center;gap:4px;background:var(--or-d);border:1px solid var(--or-border);border-radius:4px;padding:2px 6px;font-size:9px;font-weight:700;color:var(--or)}
+.hidden{display:none!important}
+.db-status{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+.db-dot{width:6px;height:6px;border-radius:50%;background:var(--mu);flex-shrink:0;transition:background .3s}
+.db-dot.saving{background:var(--am);animation:blink 0.6s ease infinite}
+.db-dot.saved{background:var(--gr)}
+.db-dot.error{background:var(--lose)}
+.load-overlay{position:fixed;inset:0;z-index:9000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .4s}
+.load-overlay.done{opacity:0;pointer-events:none}
+.load-spinner{width:32px;height:32px;border:2px solid var(--b);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-text{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.archived-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);border-radius:3px;padding:1px 5px;font-size:8px;font-weight:700;color:var(--am);letter-spacing:.07em}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+
+/* ── TABLET (≤900px) ─────────────────────────────────────── */
+@media(max-width:900px){
+  .hero-key{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .hero-key::-webkit-scrollbar{display:none}
+  .records-grid-wrap,.career-rec-grid,.allstar-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .players-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+}
+
+/* ── MOBILE (≤640px) ─────────────────────────────────────── */
+@media(max-width:640px){
+  .sbar{padding:8px 14px;gap:10px;flex-wrap:wrap}
+  .sbar-sync{display:none}
+  .hero{padding:18px 16px 16px}
+  .hero-h1{font-size:32px}
+  .hero-top{gap:12px}
+  .hero-eyebrow{font-size:9px}
+  .hero-stats-strip{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hs-item{padding:9px 14px}
+
+  /* Primary nav becomes a fixed bottom tab bar — reachable with a thumb */
+  .hero-key{
+    position:fixed;left:0;right:0;bottom:0;top:auto;z-index:600;
+    display:flex;align-self:auto;max-width:none;width:100%;
+    background:var(--s1);border-top:1px solid var(--b);
+    box-shadow:0 -10px 28px rgba(0,0,0,.45);
+    padding:6px 6px calc(6px + env(safe-area-inset-bottom));
+    gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .kc{flex:1 1 0;min-width:52px;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:7px 2px;border-radius:10px;min-height:46px}
+  .kc-pip{width:14px;height:3px;border-radius:2px}
+  .kc-lbl{display:none}
+  .kc-code{font-size:9px;letter-spacing:.04em}
+  .main{padding:16px 16px 88px}
+
+  /* Season history table → condensed columns */
+  .ht-hd{grid-template-columns:26px 1fr 84px 92px}
+  .ht-hd span:nth-child(5),.ht-hd span:nth-child(6),.ht-hd span:nth-child(7){display:none}
+  .hr{grid-template-columns:26px 1fr 84px 92px;padding:10px 12px}
+  .hser,.hdate,.hfmvp{display:none}
+
+  .hof-ind-hd{grid-template-columns:24px 1fr 44px 54px 46px 62px}
+  .hof-ind-hd span:last-child,.hof-ind-hd span:nth-child(7){display:none}
+  .hof-ind-row{grid-template-columns:24px 1fr 44px 54px 46px 62px;padding:10px 12px}
+  .hof-awards-cell,.hof-score-cell{display:none}
+
+  .records-grid-wrap{grid-template-columns:1fr 1fr}
+  .career-rec-grid{grid-template-columns:1fr 1fr}
+  .allstar-grid{grid-template-columns:1fr 1fr}
+  .players-grid{grid-template-columns:1fr 1fr}
+  .rec-card,.career-rec-card,.allstar-card,.player-card{padding:14px}
+  .rec-val{font-size:38px}
+  .career-rec-val{font-size:30px}
+
+  /* Modals become bottom sheets */
+  .mbg,.add-overlay{padding:0;align-items:flex-end}
+  .modal,.add-modal{max-width:100%;width:100%;border-radius:16px 16px 0 0;max-height:90vh}
+  .add-modal{padding:18px 18px calc(18px + env(safe-area-inset-bottom))}
+  .mhd{padding:14px 16px;border-radius:16px 16px 0 0}
+  .mbody{padding:14px 16px calc(14px + env(safe-area-inset-bottom))}
+  .mchamp-name,.mdef-name{font-size:18px}
+  .admin-overlay{padding:16px}
+  .admin-modal{padding:20px}
+
+  .form-row,.awards-2col{grid-template-columns:1fr}
+  .minfo{grid-template-columns:1fr}
+  .admin-panel{grid-template-columns:1fr;gap:12px}
+  .admin-sidebar{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:6px;padding-bottom:2px}
+  .admin-nav-btn{min-width:max-content;padding:9px 13px}
+  .admin-pane{padding:16px}
+  .admin-stat-cards{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+  .filters{width:100%}
+  .fc-search{max-width:none;flex-basis:100%}
+
+  /* iOS zooms the page if a focused input's font is under 16px */
+  .form-input,.fc,.pg-jin{font-size:16px}
+  .fc{padding:8px 11px}
+  .form-input{padding:10px 12px}
+
+  .stat-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+}
+
+/* ── SMALL PHONES (≤420px) ───────────────────────────────── */
+@media(max-width:420px){
+  .hero-h1{font-size:28px}
+  .hs-num{font-size:20px}
+  .hs-item{padding:8px 12px}
+  .ht-hd{grid-template-columns:22px 1fr 78px}
+  .ht-hd span:nth-child(4){display:none}
+  .hr{grid-template-columns:22px 1fr 78px}
+  .hdef{display:none}
+  .hm-logo,.hm-nolog{width:18px;height:18px}
+  .hm-champ{font-size:14px}
+  .hof-ind-hd{grid-template-columns:20px 1fr 42px 52px}
+  .hof-ind-hd span:nth-child(4),.hof-ind-hd span:nth-child(6){display:none}
+  .hof-ind-row{grid-template-columns:20px 1fr 42px 52px}
+  .hof-ind-row span:nth-child(4),.hof-ind-row span:nth-child(6){display:none}
+  .records-grid-wrap,.career-rec-grid,.allstar-grid,.players-grid{grid-template-columns:1fr}
+  .admin-stat-cards{grid-template-columns:1fr 1fr}
+  .prf-name{font-size:26px}
+}
+
+/* ── TOUCH TARGETS — any coarse pointer (phones & tablets) ── */
+@media(hover:none) and (pointer:coarse){
+  .pb{padding:8px 13px;min-height:36px}
+  .at-btn{padding:6px 11px;min-height:30px}
+  .admin-btn{padding:6px 11px;min-height:30px}
+  .mclose{width:36px;height:36px}
+  .btn,.btn-cancel{padding:9px 16px;min-height:38px}
+  .kc,.hr,.hof-ind-row,.player-card,.rec-card,.career-rec-card,.allstar-card{-webkit-tap-highlight-color:transparent}
+  .hr:active,.hof-ind-row:active,.player-card:active,.allstar-card:active{background:rgba(255,255,255,.05)}
+  .pb:active:not(:disabled),.btn:active,.btn-cancel:active,.admin-btn:active{opacity:.7}
+}
+
+/* ══════════════════════════════════════════
+   VISUAL POLISH PASS (layered on top, same
+   classes/markup — no structural changes)
+══════════════════════════════════════════ */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--s4);border-radius:8px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--mu2)}
+::selection{background:rgba(224,192,106,.3);color:#fff}
+.sbar{
+  background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur)) saturate(160%);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+  border-bottom:1px solid var(--glass-border);position:sticky;top:0;z-index:50;
+}
+.hero{overflow:hidden;position:relative}
+.hero::before{
+  content:'';position:absolute;top:-40%;right:-8%;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,192,106,.16),transparent 70%);pointer-events:none;
+}
+.hero-h1 em{
+  background:linear-gradient(180deg,var(--gold-hi) 10%,var(--gold) 90%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 20px rgba(224,192,106,.35));
+}
+.fc:focus,.form-input:focus{box-shadow:0 0 0 3px var(--gold-dim);}
+.career-rec-card{transition:transform .18s ease,box-shadow .18s ease;}
+.career-rec-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.toast{box-shadow:var(--shadow-lg);}
+.modal{box-shadow:var(--shadow-lg);}
+</style>
+</head>
+<body>
+
+<div class="load-overlay" id="load-overlay">
+  <div class="load-spinner"></div>
+  <div class="load-text" id="load-text">Loading RFL Archive…</div>
+</div>
+
+<div class="sbar">
+  <div class="db-status"><div class="db-dot" id="db-dot"></div><span id="db-status-text">—</span></div>
+  <span class="sbar-sync">Official RFL Archive</span>
+  <div class="live-chip on"><div class="ldot"></div><span>S14 In Progress</span></div>
+</div>
+<div class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="hero-eyebrow">Official RFL Archive · All-Time</div>
+      <div class="hero-h1">Season <em>History</em></div>
+      <div class="hero-sub">Every season <span class="hdot"></span> Every award <span class="hdot"></span> Every record</div>
+      <div class="hero-stats-strip">
+        <div class="hs-item"><span class="hs-num" id="hero-seasons">—</span><span class="hs-lbl">Seasons</span></div>
+        <div class="hs-item"><span class="hs-num" id="hero-owners">—</span><span class="hs-lbl">Total Players</span></div>
+        <div class="hs-item"><span class="hs-num" id="hero-champs">—</span><span class="hs-lbl">Unique Champs</span></div>
+        <div class="hs-item"><span class="hs-num" id="hero-allstars">—</span><span class="hs-lbl">All-Stars</span></div>
+      </div>
+    </div>
+    <div class="hero-key">
+      <div class="kc active" data-tab="seasons" onclick="showTab('seasons',this)"><div class="kc-pip seasons"></div><span class="kc-code">S</span><span class="kc-lbl">Seasons</span></div>
+      <div class="kc" data-tab="records" onclick="showTab('records',this)"><div class="kc-pip records"></div><span class="kc-code">R</span><span class="kc-lbl">Records</span></div>
+      <div class="kc" data-tab="allstar" onclick="showTab('allstar',this)"><div class="kc-pip allstar"></div><span class="kc-code">AS</span><span class="kc-lbl">All-Star</span></div>
+      <div class="kc" data-tab="hof" onclick="showTab('hof',this)"><div class="kc-pip hof"></div><span class="kc-code">HOF</span><span class="kc-lbl">Hall of Fame</span></div>
+      <div class="kc" data-tab="players" onclick="showTab('players',this)"><div class="kc-pip players"></div><span class="kc-code">PLY</span><span class="kc-lbl">Players</span></div>
+      <div class="kc" data-tab="admin" onclick="adminClick()"><div class="kc-pip admin"></div><span class="kc-code" id="admin-kc-lbl">Admin</span></div>
+    </div>
+  </div>
+</div>
+<div class="admin-bar" id="admin-bar">
+  <span class="admin-label">Admin Mode Active</span>
+  <div class="btn-row">
+    <button class="btn btn-gold" onclick="openAddSeason()">+ Add Season</button>
+    <button class="btn btn-cancel btn-outline" onclick="logoutAdmin()">Logout</button>
+  </div>
+</div>
+<div class="main">
+  <!-- SEASONS -->
+  <div id="pane-seasons">
+    <div class="sec-hd">
+      <div class="sec-hd-top"><span class="sec-title">All Seasons</span><span class="sec-ct" id="seasons-ct">— seasons</span><div class="sec-rule"></div></div>
+      <div class="filters">
+        <input class="fc fc-search" id="f-team" placeholder="Search champion, player…" autocomplete="off">
+        <select class="fc" id="f-sort"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select>
+        <select class="fc" id="f-pp"><option value="5">5/page</option><option value="10" selected>10/page</option><option value="25">25/page</option><option value="all">All</option></select>
+      </div>
+    </div>
+    <div class="ht-wrap">
+      <div class="ht-hd"><span>S#</span><span>Champion</span><span>Record</span><span>Defeated</span><span>Series</span><span>TOTY</span><span>Finals MVP</span></div>
+      <div id="hist-rows"></div>
+    </div>
+    <div class="hist-empty" id="hist-empty" style="display:none">No seasons match.</div>
+    <div class="pager" id="pager" style="display:none">
+      <div class="pg-info" id="pg-info"></div>
+      <div class="pg-btns" id="pg-btns"></div>
+      <div class="pg-jump"><span class="pg-jlbl">Page</span><input class="pg-jin" id="pg-jump" type="number" min="1" value="1"></div>
+    </div>
+  </div>
+  <!-- RECORDS -->
+  <div id="pane-records" class="hidden">
+    <div class="sec-hd"><div class="sec-hd-top"><span class="sec-title">Single-Game Records</span><div class="sec-rule"></div></div></div>
+    <div class="records-grid-wrap" id="records-grid"></div>
+    <div class="sec-hd" style="margin-top:28px"><div class="sec-hd-top"><span class="sec-title">Career Records</span><div class="sec-rule"></div></div></div>
+    <div class="career-rec-grid" id="career-records-grid"></div>
+    <div class="sec-hd" style="margin-top:28px"><div class="sec-hd-top"><span class="sec-title">Season Records</span><div class="sec-rule"></div></div></div>
+    <div class="career-rec-grid" id="season-records-grid"></div>
+  </div>
+  <!-- ALL-STAR -->
+  <div id="pane-allstar" class="hidden">
+    <div class="sec-hd">
+      <div class="sec-hd-top"><span class="sec-title">All-Star History</span><span class="sec-ct" id="allstar-ct">— participants</span><div class="sec-rule"></div></div>
+      <div class="filters">
+        <input class="fc fc-search" id="f-allstar" placeholder="Search player…" autocomplete="off">
+        <select class="fc" id="f-allstar-sort">
+          <option value="wins">Most Wins</option><option value="apps">Most Appearances</option>
+          <option value="mvps">Most MVPs</option><option value="dunk">Dunk Titles</option>
+          <option value="skills">Skills Titles</option><option value="threepoint">3PT Titles</option>
+        </select>
+      </div>
+    </div>
+    <div class="allstar-grid" id="allstar-grid"></div>
+    <div class="hist-empty" id="allstar-empty" style="display:none">No players match.</div>
+    <div class="sec-hd" style="margin-top:28px"><div class="sec-hd-top"><span class="sec-title">All-Star Leaderboards</span><div class="sec-rule"></div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px" id="allstar-leaderboards"></div>
+  </div>
+  <!-- HOF -->
+  <div id="pane-hof" class="hidden">
+    <div class="sec-hd">
+      <div class="sec-hd-top"><span class="sec-title">Hall of Fame</span><span class="sec-ct" id="hof-ct">0 inductees</span><div class="sec-rule"></div></div>
+      <div class="filters">
+        <input class="fc fc-search" id="f-hof" placeholder="Search player…" autocomplete="off">
+        <select class="fc" id="f-hof-tier"><option value="all">All Tiers</option><option value="hof">Hall of Fame</option><option value="ring-of-honor">Ring of Honor</option></select>
+        <select class="fc" id="f-hof-sort"><option value="score">HOF Score</option><option value="mvp">Season MVPs</option><option value="major">Major Awards</option><option value="fmvp">Finals MVPs</option><option value="allrpl">All-RFL</option><option value="rings">Rings</option></select>
+      </div>
+    </div>
+    <div class="hof-inductees">
+      <div class="hof-ind-hd"><span>#</span><span>Player</span><span>MVPs</span><span>Major</span><span>FMVP</span><span>All-RFL</span><span>HOF Score</span><span>Notable</span></div>
+      <div id="hof-rows"></div>
+    </div>
+    <div class="pager" id="pager-hof" style="display:none">
+      <div class="pg-info" id="pg-info-hof"></div>
+      <div class="pg-btns" id="pg-btns-hof"></div>
+      <div class="pg-jump"><span class="pg-jlbl">Page</span><input class="pg-jin" id="pg-jump-hof" type="number" min="1" value="1"></div>
+    </div>
+    <div class="sec-hd" style="margin-top:28px"><div class="sec-hd-top"><span class="sec-title">HOF Philosophy & Scoring</span><div class="sec-rule"></div></div></div>
+    <div style="background:var(--s1);border:1px solid var(--b);border-radius:11px;padding:18px;max-width:800px">
+      <div style="margin-bottom:16px;padding:12px 14px;background:var(--s2);border:1px solid var(--b);border-radius:8px;font-size:12px;color:var(--tx2);line-height:1.7">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:8px">RFL Hall of Fame — Individual Greatness Philosophy</div>
+        A player earns Hall of Fame induction through <strong style="color:var(--tx)">individual greatness, sustained excellence, and historical impact</strong> — not by winning championships on a stacked team.<br><br>
+        <span style="color:var(--gold-hi)">HOF ≥ 90 pts</span> &nbsp;·&nbsp; <span style="color:var(--silver)">Ring of Honor ≥ 30 pts</span> &nbsp;·&nbsp; <span style="color:var(--mu)">Below 30 = Not Eligible</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" id="hof-scoring-grid"></div>
+    </div>
+  </div>
+  <!-- PLAYERS -->
+  <div id="pane-players" class="hidden">
+    <div class="sec-hd">
+      <div class="sec-hd-top"><span class="sec-title">Player Profiles</span><span class="sec-ct" id="players-ct">— players</span><div class="sec-rule"></div></div>
+      <div class="filters">
+        <input class="fc fc-search" id="f-player" placeholder="Search player…" autocomplete="off">
+        <select class="fc" id="f-player-sort">
+          <option value="alpha">A – Z</option><option value="major">Most Major Awards</option>
+          <option value="allrpl">Most All-RFL</option><option value="rings">Most Rings</option>
+          <option value="fmvp">Most Finals MVPs</option><option value="stat">Most Stat Titles</option>
+          <option value="allstar">Most All-Star Wins</option><option value="hofscore">HOF Score</option>
+        </select>
+        <select class="fc" id="f-player-pp"><option value="24" selected>24/page</option><option value="48">48/page</option><option value="all">All</option></select>
+      </div>
+    </div>
+    <div class="players-grid" id="players-grid"></div>
+    <div class="hist-empty" id="players-empty" style="display:none">No players match.</div>
+    <div class="pager" id="pager-players" style="display:none">
+      <div class="pg-info" id="pg-info-players"></div>
+      <div class="pg-btns" id="pg-btns-players"></div>
+      <div class="pg-jump"><span class="pg-jlbl">Page</span><input class="pg-jin" id="pg-jump-players" type="number" min="1" value="1"></div>
+    </div>
+  </div>
+  <!-- ADMIN -->
+  <div id="pane-admin" class="hidden">
+    <div class="sec-hd"><div class="sec-hd-top"><span class="sec-title">Admin Panel</span><div class="sec-rule"></div></div></div>
+    <div class="admin-panel">
+      <div class="admin-sidebar">
+        <button class="admin-nav-btn active" onclick="switchAdminPane('overview',this)">📊 Overview</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('seasons-mgmt',this)">📅 Seasons</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('hof-mgmt',this)">⭐ Hall of Fame</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('records-mgmt',this)">📋 Records</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('allstar-mgmt',this)">🌟 All-Star</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('archived',this)">🗄 Archived</button>
+        <button class="admin-nav-btn" onclick="switchAdminPane('analytics',this)">📈 Analytics</button>
+      </div>
+      <div class="admin-content">
+        <div class="admin-pane active" id="apane-overview"><div class="admin-section-title">League Overview</div><div class="admin-stat-cards" id="admin-overview-cards"></div><div id="admin-quick"></div></div>
+        <div class="admin-pane" id="apane-seasons-mgmt">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+            <div class="admin-section-title" style="margin-bottom:0">Season Management</div>
+            <button class="btn btn-gold" onclick="openAddSeason()">+ Add Season</button>
+          </div>
+          <div class="tbl-wrap"><table class="admin-table"><thead><tr><th>S#</th><th>Champion</th><th>Record</th><th>FMVP</th><th>MVP</th><th>Actions</th></tr></thead><tbody id="admin-seasons-tbody"></tbody></table></div>
+        </div>
+        <div class="admin-pane" id="apane-hof-mgmt">
+          <div class="admin-section-title">Hall of Fame</div>
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+            <button class="btn btn-gold" onclick="openHofInductModal()">+ Manual Induction</button>
+          </div>
+          <div class="tbl-wrap" style="margin-bottom:20px"><table class="admin-table"><thead><tr><th>Player</th><th>Tier</th><th>HOF Score</th><th>MVPs</th><th>Major</th><th>All-RFL</th><th>Action</th></tr></thead><tbody id="admin-hof-tbody"></tbody></table></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Candidates</div>
+          <div><div class="hof-candidate-row candidate-hd"><span>Player</span><span style="text-align:center">HOF Score</span><span style="text-align:center">Status</span></div><div id="hof-candidates-list"></div></div>
+        </div>
+        <div class="admin-pane" id="apane-records-mgmt">
+          <div class="admin-section-title">Records Management</div>
+          <div class="tbl-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Value</th><th>Holder</th><th>Team</th><th>Action</th></tr></thead><tbody id="admin-records-tbody"></tbody></table></div>
+        </div>
+        <div class="admin-pane" id="apane-allstar-mgmt">
+          <div class="admin-section-title">All-Star Management</div>
+          <div style="margin-bottom:10px"><input class="fc fc-search" id="admin-allstar-search" placeholder="Search player…" oninput="renderAdminAllStar()"></div>
+          <div class="tbl-wrap"><table class="admin-table"><thead><tr><th>Player</th><th>Apps</th><th>Wins</th><th>MVPs</th><th>Dunk</th><th>Skills</th><th>3PT</th><th>Action</th></tr></thead><tbody id="admin-allstar-tbody"></tbody></table></div>
+          <button class="btn btn-gold" style="margin-top:10px" onclick="addNewAllStar()">+ Add Player</button>
+        </div>
+        <div class="admin-pane" id="apane-archived">
+          <div class="admin-section-title">Archived Seasons</div>
+          <div class="tbl-wrap"><table class="admin-table"><thead><tr><th>S#</th><th>Champion</th><th>Archived</th><th>Actions</th></tr></thead><tbody id="admin-archived-tbody"></tbody></table></div>
+        </div>
+        <div class="admin-pane" id="apane-analytics"><div class="admin-section-title">Analytics</div><div id="analytics-content"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toasts"></div>
+
+<!-- Season Modal (view) -->
+<div class="mbg" id="modal-bg">
+  <div class="modal">
+    <div class="mhd"><div class="mmatchup" id="m-matchup"></div><div class="mmeta"><span class="mbadge">Champion</span><span class="mseason" id="m-season"></span></div><button class="mclose" id="m-close">✕</button></div>
+    <div class="mbody" id="m-body"></div>
+  </div>
+</div>
+<!-- Player Modal -->
+<div class="mbg" id="player-modal-bg">
+  <div class="modal" style="max-width:780px">
+    <div class="mhd"><div class="mmatchup" id="pm-header"></div><div class="mmeta"><span class="mbadge" id="pm-badge"></span></div><button class="mclose" id="pm-close">✕</button></div>
+    <div class="mbody" id="pm-body"></div>
+  </div>
+</div>
+<!-- Login -->
+<div class="admin-overlay" id="login-overlay" onclick="if(event.target.id==='login-overlay')this.classList.remove('show')">
+  <div class="admin-modal" onclick="event.stopPropagation()">
+    <div class="modal-title">Admin Access</div>
+    <div class="err-box" id="login-err">Incorrect password.</div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="document.getElementById('login-overlay').classList.remove('show')">Cancel</button><button class="btn btn-gold" onclick="doLogin()">Login</button></div>
+  </div>
+</div>
+<!-- Add/Edit Season -->
+<div class="add-overlay" id="add-overlay" onclick="if(event.target.id==='add-overlay')this.classList.remove('show')">
+  <div class="add-modal" onclick="event.stopPropagation()">
+    <div class="modal-title" id="add-modal-title">Add New Season</div>
+    <input type="hidden" id="edit-season-id" value="">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Season #</label><input class="form-input" id="f-id" placeholder="11"></div>
+      <div class="form-group"><label class="form-label">Champion</label><input class="form-input" id="f-champ" placeholder="Team Name"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Champ Record</label><input class="form-input" id="f-rec" placeholder="18-2"></div>
+      <div class="form-group"><label class="form-label">Defeated</label><input class="form-input" id="f-def" placeholder="Team Name"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Opp Record</label><input class="form-input" id="f-drec" placeholder="10-4"></div>
+      <div class="form-group"><label class="form-label">Series</label><input class="form-input" id="f-series" placeholder="2-0 (2 Games)"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Championship Players (comma-separated)</label><input class="form-input" id="f-owners" placeholder="Tom, ZPud, Minis"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Team of the Year</label><input class="form-input" id="f-toty" placeholder="Team Name"></div>
+      <div class="form-group"><label class="form-label">Finals MVP</label><input class="form-input" id="f-fmvp" placeholder="Player Name"></div>
+    </div>
+    <hr class="divider">
+    <div class="awards-2col">
+      <div class="form-group"><label class="form-label">MVP</label><input class="form-input" id="f-mvp"></div>
+      <div class="form-group"><label class="form-label">OPOTY</label><input class="form-input" id="f-opoty"></div>
+      <div class="form-group"><label class="form-label">DPOY</label><input class="form-input" id="f-dpoy"></div>
+      <div class="form-group"><label class="form-label">PMOTY</label><input class="form-input" id="f-pmoty"></div>
+      <div class="form-group"><label class="form-label">ROTY</label><input class="form-input" id="f-roty"></div>
+      <div class="form-group"><label class="form-label">MIP</label><input class="form-input" id="f-mip"></div>
+      <div class="form-group"><label class="form-label">CPOTY</label><input class="form-input" id="f-cpoty"></div>
+      <div class="form-group"><label class="form-label">5MOTY</label><input class="form-input" id="f-5moty"></div>
+    </div>
+    <hr class="divider">
+    <div class="form-group"><label class="form-label">Stat Leaders (Scoring:Name, Assists:Name)</label><input class="form-input" id="f-stats" placeholder="Scoring:Dom, Assists:Kevv"></div>
+    <hr class="divider">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:10px">All-RFL Teams (Name:Pos — prefix: 1st|2nd|3rd|def)</div>
+    <div class="form-group"><label class="form-label">1st Team (Name:Pos, …)</label><input class="form-input" id="f-allrpl-1st" placeholder="Mari:PG, Chris:SF, Tom:PF"></div>
+    <div class="form-group"><label class="form-label">2nd Team</label><input class="form-input" id="f-allrpl-2nd"></div>
+    <div class="form-group"><label class="form-label">3rd Team</label><input class="form-input" id="f-allrpl-3rd"></div>
+    <div class="form-group"><label class="form-label">Defensive Team</label><input class="form-input" id="f-allrpl-def"></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeAddOverlay()">Cancel</button><button class="btn btn-gold" id="save-season-btn" onclick="saveSeasonForm()">Save Season</button></div>
+  </div>
+</div>
+<!-- HOF Induct -->
+<div class="add-overlay" id="hof-induct-overlay" onclick="if(event.target.id==='hof-induct-overlay')this.classList.remove('show')">
+  <div class="add-modal" onclick="event.stopPropagation()" style="max-width:380px">
+    <div class="modal-title">HOF Manual Induction</div>
+    <div class="form-group"><label class="form-label">Player Name</label><input class="form-input" id="hof-induct-name" placeholder="Player name"></div>
+    <div class="form-group"><label class="form-label">Tier</label>
+      <select class="form-input" id="hof-induct-tier"><option value="hof">Hall of Fame</option><option value="ring-of-honor">Ring of Honor</option></select>
+    </div>
+    <div class="form-group"><label class="form-label">Notes</label><input class="form-input" id="hof-induct-notes" placeholder="Reason…"></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="document.getElementById('hof-induct-overlay').classList.remove('show')">Cancel</button><button class="btn btn-gold" onclick="manualHofInduct()">Induct</button></div>
+  </div>
+</div>
+<!-- Edit Record -->
+<div class="add-overlay" id="edit-record-overlay" onclick="if(event.target.id==='edit-record-overlay')this.classList.remove('show')">
+  <div class="add-modal" onclick="event.stopPropagation()" style="max-width:360px">
+    <div class="modal-title">Edit Record</div>
+    <input type="hidden" id="edit-rec-key">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Value</label><input class="form-input" type="number" id="edit-rec-value"></div>
+      <div class="form-group"><label class="form-label">Holder</label><input class="form-input" id="edit-rec-holder"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Team</label><input class="form-input" id="edit-rec-team"></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="document.getElementById('edit-record-overlay').classList.remove('show')">Cancel</button><button class="btn btn-gold" onclick="saveRecordEdit()">Save</button></div>
+  </div>
+</div>
+<!-- Edit AllStar -->
+<div class="add-overlay" id="edit-allstar-overlay" onclick="if(event.target.id==='edit-allstar-overlay')this.classList.remove('show')">
+  <div class="add-modal" onclick="event.stopPropagation()" style="max-width:380px">
+    <div class="modal-title">Edit All-Star Data</div>
+    <input type="hidden" id="eas-player">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Appearances</label><input class="form-input" type="number" id="eas-apps" min="0"></div>
+      <div class="form-group"><label class="form-label">Wins</label><input class="form-input" type="number" id="eas-wins" min="0"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Game MVPs</label><input class="form-input" type="number" id="eas-mvps" min="0"></div>
+      <div class="form-group"><label class="form-label">Dunk Wins</label><input class="form-input" type="number" id="eas-dunk" min="0"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Skills Wins</label><input class="form-input" type="number" id="eas-skills" min="0"></div>
+      <div class="form-group"><label class="form-label">3PT Wins</label><input class="form-input" type="number" id="eas-threepoint" min="0"></div>
+    </div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="document.getElementById('edit-allstar-overlay').classList.remove('show')">Cancel</button><button class="btn btn-gold" onclick="saveAllStarEdit()">Save</button></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// API CLIENT — all calls go through /api/* routes
+// No Redis credentials exist in this file.
+// ═══════════════════════════════════════════════
+let adminToken = sessionStorage.getItem('rpl_admin_token') || null;
+
+async function api(method, path, body) {
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+  };
+  if (adminToken) opts.headers['x-admin-token'] = adminToken;
+  if (body !== undefined) opts.body = JSON.stringify(body);
+  const res = await fetch('/api' + path, opts);
+  return res.json();
+}
+
+const apiGet  = path        => api('GET', path);
+const apiPost = (path, body) => api('POST', path, body);
+const apiPut  = (path, body) => api('PUT', path, body);
+const apiDel  = path        => api('DELETE', path);
+
+// ═══════════════════════════════════════════════
+// CONSTANTS & LOOKUPS
+// ═══════════════════════════════════════════════
+const AWARD_LABELS={MVP:'Most Valuable Player',OPOTY:'Off. Player of the Year',DPOY:'Def. Player of the Year',PMOTY:'Play-Making of the Year',ROTY:'Rookie of the Year',MIP:'Most Improved Player',CPOTY:'Clutch Player of the Year','5MOTY':'5th Man of the Year',BMOTY:'Big Man of the Year',DEVOTY:'Developer of the Year',FMVP:'Finals MVP'};
+const STAT_SHORT={'Scoring Champion':'PTS','Steals Leader':'STL','Assist Leader':'AST','Rebounds Leader':'REB','Player Efficiency Rating':'PER','Turnover Leader':'TOV'};
+function statShort(cat){return STAT_SHORT[cat]||cat.replace(/\s*(Leader|Champion)$/i,'').trim().toUpperCase().slice(0,4);}
+const MAJOR_AWARDS=['MVP','OPOTY','DPOY','PMOTY'];
+const MINOR_AWARDS=['MIP','CPOTY','5MOTY','BMOTY','ROTY','DEVOTY'];
+const TEAM_KEYS={first:'1st',second:'2nd',third:'3rd',defensive:'Def'};
+const ESPN_MAP={'Atlanta Hawks':'atl','Boston Celtics':'bos','Brooklyn Nets':'bkn','Charlotte Hornets':'cha','Chicago Bulls':'chi','Cleveland Cavaliers':'cle','Dallas Mavericks':'dal','Denver Nuggets':'den','Detroit Pistons':'det','Golden State Warriors':'gs','Houston Rockets':'hou','Indiana Pacers':'ind','LA Clippers':'lac','Los Angeles Lakers':'lal','Memphis Grizzlies':'mem','Miami Heat':'mia','Milwaukee Bucks':'mil','Minnesota Timberwolves':'min','New Orleans Pelicans':'no','New York Knicks':'ny','Oklahoma City Thunder':'okc','Orlando Magic':'orl','Philadelphia 76ers':'phi','Phoenix Suns':'phx','Portland Trail Blazers':'por','Sacramento Kings':'sac','San Antonio Spurs':'sa','Toronto Raptors':'tor','Utah Jazz':'utah','Washington Wizards':'wsh'};
+const teamLogo=n=>{const k=ESPN_MAP[n];return k?`https://a.espncdn.com/i/teamlogos/nba/500/${k}.png`:''};
+const NAME_MAP={'Dvloz':'Dohziez','Dv0lz':'Dohziez','dohziez':'Dohziez','vAcevx':'Pox','miniszl':'Minis','zpud':'ZPud','slap':'Slapclosed','Slap':'Slapclosed','shawn':'Shawn','aether':'Aether','counted':'Counted','tsutsumi':'Tsutsumi','Tsutsumi':'Tsutsumi','Tsu':'Tsutsumi','tsu':'Tsutsumi','TSU':'Tsutsumi','Lamelo':'MaybeLaMelo','lamelo':'MaybeLaMelo','lamelo ball':'MaybeLaMelo'};
+function normName(n){if(!n)return n;const t=n.trim();return NAME_MAP[t]||t;}
+// Legacy award-key normalizer: any stored '4MOTY' entries (old naming) are
+// treated as '5MOTY' everywhere so the award only ever surfaces as 5th Man of the Year.
+function normAwardKey(k){return k==='4MOTY'?'5MOTY':k;}
+
+// ═══════════════════════════════════════════════
+// HOF SCORING
+// ═══════════════════════════════════════════════
+const HOF_WEIGHTS={MVP:20,fmvp:14,OPOTY:10,DPOY:10,PMOTY:7,CPOTY:4,MIP:3,BMOTY:3,'5MOTY':2,ROTY:2,DEVOTY:1,allRFL_1st:7,allRFL_2nd:4,allRFL_3rd:2,allRFL_def:5,statLead:2,ring:6,allStar_win:2,allStar_mvp:4,dunk:2,skills:2,threepoint:2,seasons:1,peakSeason:5};
+const HOF_THRESHOLD_HOF=90;
+const HOF_THRESHOLD_ROH=30;
+const HOF_SCORE_LABELS=[
+  {key:'MVP',label:'Season MVP',pts:20,color:'gold'},
+  {key:'fmvp',label:'Finals MVP',pts:14,color:'purple'},
+  {key:'allRFL_1st',label:'1st Team All-RFL',pts:7,color:'blue'},
+  {key:'OPOTY',label:'Off. Player of the Year',pts:10,color:'green'},
+  {key:'DPOY',label:'Def. Player of the Year',pts:10,color:'green'},
+  {key:'allRFL_def',label:'All-RFL Defensive Team',pts:5,color:'blue'},
+  {key:'PMOTY',label:'Play-Making of the Year',pts:7,color:'green'},
+  {key:'allRFL_2nd',label:'2nd Team All-RFL',pts:4,color:'blue'},
+  {key:'allStar_mvp',label:'All-Star Game MVP',pts:4,color:'pink'},
+  {key:'CPOTY',label:'Clutch Player of Year',pts:4,color:'cyan'},
+  {key:'ring',label:'Championship Ring',pts:6,color:'gold'},
+  {key:'peakSeason',label:'Peak Season Bonus',pts:5,color:'orange'},
+  {key:'allRFL_3rd',label:'3rd Team All-RFL',pts:2,color:'blue'},
+  {key:'statLead',label:'Stat Title (per season)',pts:2,color:'cyan'},
+  {key:'allStar_win',label:'All-Star Game Win',pts:2,color:'pink'},
+  {key:'seasons',label:'Seasons Active (each)',pts:1,color:'silver'},
+];
+
+function computeHofScore(p){
+  let score=0;const breakdown={};
+  const ringPts=p.rings*HOF_WEIGHTS.ring;score+=ringPts;if(ringPts)breakdown['Championship Rings ×'+p.rings]=ringPts;
+  const fmvpPts=p.fmvpAwards.length*HOF_WEIGHTS.fmvp;score+=fmvpPts;if(fmvpPts)breakdown['Finals MVP ×'+p.fmvpAwards.length]=fmvpPts;
+  p.majorAwards.forEach(a=>{const pts=HOF_WEIGHTS[a.award]||8;score+=pts;const k=AWARD_LABELS[a.award]||a.award;breakdown[k]=(breakdown[k]||0)+pts;});
+  p.minorAwards.forEach(a=>{const pts=HOF_WEIGHTS[a.award]||2;score+=pts;const k=AWARD_LABELS[a.award]||a.award;breakdown[k]=(breakdown[k]||0)+pts;});
+  const statPts=p.statLeads.length*HOF_WEIGHTS.statLead;score+=statPts;if(statPts)breakdown['Stat Titles ×'+p.statLeads.length]=statPts;
+  const longevityPts=p.seasonLog.length*HOF_WEIGHTS.seasons;score+=longevityPts;if(longevityPts)breakdown['Seasons Active ×'+p.seasonLog.length]=longevityPts;
+  let t1=0,t2=0,t3=0,td=0;
+  p.seasonLog.forEach(sl=>{if(sl.allRFLTeams.includes('1st'))t1++;if(sl.allRFLTeams.includes('2nd'))t2++;if(sl.allRFLTeams.includes('3rd'))t3++;if(sl.allRFLTeams.includes('Def'))td++;});
+  const allRplPts=t1*HOF_WEIGHTS.allRFL_1st+t2*HOF_WEIGHTS.allRFL_2nd+t3*HOF_WEIGHTS.allRFL_3rd+td*HOF_WEIGHTS.allRFL_def;
+  score+=allRplPts;
+  if(t1)breakdown['1st Team All-RFL ×'+t1]=t1*HOF_WEIGHTS.allRFL_1st;
+  if(t2)breakdown['2nd Team All-RFL ×'+t2]=t2*HOF_WEIGHTS.allRFL_2nd;
+  if(t3)breakdown['3rd Team All-RFL ×'+t3]=t3*HOF_WEIGHTS.allRFL_3rd;
+  if(td)breakdown['All-RFL Defensive ×'+td]=td*HOF_WEIGHTS.allRFL_def;
+  let peakBonusTotal=0;
+  p.seasonLog.forEach(sl=>{if(sl.awards.includes('MVP')&&sl.allRFLTeams.includes('1st'))peakBonusTotal+=HOF_WEIGHTS.peakSeason;});
+  score+=peakBonusTotal;if(peakBonusTotal)breakdown['⚡ Peak Season Bonus ×'+(peakBonusTotal/HOF_WEIGHTS.peakSeason)]=peakBonusTotal;
+  const as=allStarData[p.name];
+  if(as){const asPts=as.wins*HOF_WEIGHTS.allStar_win+as.mvps*HOF_WEIGHTS.allStar_mvp+as.dunk*HOF_WEIGHTS.dunk+as.skills*HOF_WEIGHTS.skills+as.threepoint*HOF_WEIGHTS.threepoint;score+=asPts;if(asPts)breakdown['All-Star Accolades']=asPts;}
+  return{score:Math.round(score),breakdown};
+}
+function getHofScore(p){return computeHofScore(p).score;}
+function hofTier(score,p,manual){if(manual)return manual;if(score>=HOF_THRESHOLD_HOF)return 'hof';if(score>=HOF_THRESHOLD_ROH)return 'ring-of-honor';return 'not-eligible';}
+function tierLabel(t){if(t==='hof')return'Hall of Fame';if(t==='ring-of-honor')return'Ring of Honor';return'Not Eligible';}
+function scoreColor(s){return s>=HOF_THRESHOLD_HOF?'var(--gold-hi)':s>=HOF_THRESHOLD_ROH?'var(--silver)':'var(--mu)';}
+function playerTier(p){const s=getHofScore(p);if(s>=80||p.majorAwards.filter(a=>a.award==='MVP').length>=2)return'elite';if(s>=HOF_THRESHOLD_HOF||p.majorAwards.length>=2||p.fmvpAwards.length>=2)return'great';if(s>=HOF_THRESHOLD_ROH||p.majorAwards.length>=1||p.allRFL>=3)return'good';return'role';}
+function countPeakSeasons(p){return p.seasonLog.filter(sl=>sl.awards.includes('MVP')&&sl.allRFLTeams.includes('1st')).length;}
+
+// ═══════════════════════════════════════════════
+// APP STATE (populated from API)
+// ═══════════════════════════════════════════════
+let seasons=[], records={}, allStarData={}, hofManualInductions={}, hofManualRemovals=new Set();
+let pg=1,pgHof=1,pgPlayers=1,currentTab='seasons',isAdmin=false;
+let hofInductees=[],playerMap={},allPlayers=[];
+let careerRecords=[],seasonRecords=[];
+
+// ═══════════════════════════════════════════════
+// UI HELPERS
+// ═══════════════════════════════════════════════
+function toast(msg,c='gold',dur=5000){const t=Object.assign(document.createElement('div'),{className:`toast ${c}`,textContent:msg});document.getElementById('toasts').prepend(t);setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),240)},dur);}
+function eraClass(id){return id<=3?'era-1':id<=6?'era-2':id<=8?'era-3':'era-4';}
+function setDbStatus(state,msg){
+  const dot=document.getElementById('db-dot'),txt=document.getElementById('db-status-text');
+  dot.className='db-dot '+state;
+  txt.textContent=msg||({saving:'Saving…',saved:'Saved',error:'Error','':'—'}[state]||state);
+  if(state==='saved')setTimeout(()=>setDbStatus('','—'),3000);
+}
+
+function updateHeroStats(){
+  document.getElementById('hero-seasons').textContent=seasons.length;
+  document.getElementById('hero-owners').textContent=seasons.reduce((a,s)=>a+(s.owners?.length||0),0);
+  document.getElementById('hero-champs').textContent=new Set(seasons.map(s=>s.champion)).size;
+  document.getElementById('hero-allstars').textContent=Object.keys(allStarData).length;
+}
+
+// ═══════════════════════════════════════════════
+// PLAYER MAP
+// ═══════════════════════════════════════════════
+function buildPlayerMap(){
+  const map={};
+  const ensure=rawName=>{const n=normName(rawName);if(!map[n])map[n]={name:n,rings:0,allRFL:0,majorAwards:[],minorAwards:[],fmvpAwards:[],statLeads:[],seasonLog:[]};return map[n];};
+  seasons.forEach(s=>{
+    const teamAppearances={};
+    Object.entries(s.allRFL||{}).forEach(([teamKey,players])=>{players.forEach(p=>{const pl=ensure(p.name);pl.allRFL++;if(!teamAppearances[normName(p.name)])teamAppearances[normName(p.name)]=[];teamAppearances[normName(p.name)].push(TEAM_KEYS[teamKey]||teamKey);});});
+    const seasonAwards={};
+    Object.entries(s.awards||{}).forEach(([rawK,rawV])=>{const k=normAwardKey(rawK);const v=normName(rawV);const pl=ensure(v);if(MAJOR_AWARDS.includes(k)){pl.majorAwards.push({season:s.id,award:k,label:AWARD_LABELS[k]||k});}else if(MINOR_AWARDS.includes(k)){pl.minorAwards.push({season:s.id,award:k,label:AWARD_LABELS[k]||k});}if(!seasonAwards[v])seasonAwards[v]=[];seasonAwards[v].push(k);});
+    if(s.fmvp){const fmvpName=normName(s.fmvp);ensure(s.fmvp).fmvpAwards.push({season:s.id,award:'FMVP',label:'Finals MVP'});if(!seasonAwards[fmvpName])seasonAwards[fmvpName]=[];seasonAwards[fmvpName].push('FMVP');}
+    (s.owners||[]).forEach(rawOwner=>{ensure(rawOwner).rings++;});
+    Object.entries(s.statLeaders||{}).forEach(([cat,rawWinner])=>{ensure(rawWinner).statLeads.push({season:s.id,cat});});
+    const champSet=new Set((s.owners||[]).map(normName));
+    const allThisSeason=new Set([...Object.values(s.allRFL||{}).flat().map(p=>normName(p.name)),...Object.values(s.awards||{}).map(normName),...(s.fmvp?[normName(s.fmvp)]:[]),...Object.values(s.statLeaders||{}).map(normName),...(s.owners||[]).map(normName)]);
+    allThisSeason.forEach(name=>{const pl=ensure(name);const thisAwards=seasonAwards[name]||[];const thisTeams=teamAppearances[name]||[];const fmvpThisSeason=!!(s.fmvp&&normName(s.fmvp)===name);const thisStatLeads=Object.entries(s.statLeaders||{}).filter(([,v])=>normName(v)===name).map(([k])=>k);if(!pl.seasonLog.find(sl=>sl.season===s.id)){pl.seasonLog.push({season:s.id,champion:s.champion,ring:champSet.has(name),allRFLTeams:thisTeams,awards:thisAwards,fmvp:fmvpThisSeason,statLeads:thisStatLeads});}});
+  });
+  return map;
+}
+
+function computeHOF(pm){
+  const hofMembers=Object.values(pm).filter(p=>{if(hofManualRemovals.has(p.name))return false;if(hofManualInductions[p.name])return true;return getHofScore(p)>=HOF_THRESHOLD_HOF;}).map(p=>{const score=getHofScore(p);const manualTier=hofManualInductions[p.name]?.tier;return Object.assign({},p,{hofScore:score,hofTier:hofTier(score,p,manualTier),isHofMember:true});});
+  const hofNames=new Set(hofMembers.map(p=>p.name));
+  const ringOfHonor=Object.values(pm).filter(p=>{if(hofManualRemovals.has(p.name))return false;if(hofNames.has(p.name))return false;const s=getHofScore(p);return s>=HOF_THRESHOLD_ROH&&s<HOF_THRESHOLD_HOF;}).map(p=>{const score=getHofScore(p);return Object.assign({},p,{hofScore:score,hofTier:'ring-of-honor',isHofMember:false});});
+  return[...hofMembers,...ringOfHonor].sort((a,b)=>b.hofScore-a.hofScore);
+}
+
+function buildCareerRecords(pm){
+  const pl=Object.values(pm);const safe=arr=>arr.length?Math.max(...arr):0;
+  careerRecords=[
+    {label:'Most Season MVPs',type:'career',value:safe(pl.map(p=>p.majorAwards.filter(a=>a.award==='MVP').length)),holder:[...pl].sort((a,b)=>b.majorAwards.filter(x=>x.award==='MVP').length-a.majorAwards.filter(x=>x.award==='MVP').length)[0]?.name||'—',note:'All-time'},
+    {label:'Most Finals MVPs',type:'career',value:safe(pl.map(p=>p.fmvpAwards.length)),holder:[...pl].sort((a,b)=>b.fmvpAwards.length-a.fmvpAwards.length)[0]?.name||'—',note:'All-time'},
+    {label:'Most All-RFL Selections',type:'career',value:safe(pl.map(p=>p.allRFL)),holder:[...pl].sort((a,b)=>b.allRFL-a.allRFL)[0]?.name||'—',note:'All-time'},
+    {label:'Most Major Awards',type:'career',value:safe(pl.map(p=>p.majorAwards.length)),holder:[...pl].sort((a,b)=>b.majorAwards.length-a.majorAwards.length)[0]?.name||'—',note:'All-time'},
+    {label:'Most Championships',type:'career',value:safe(pl.map(p=>p.rings)),holder:[...pl].sort((a,b)=>b.rings-a.rings)[0]?.name||'—',note:'All-time'},
+    {label:'Most Seasons Active',type:'career',value:safe(pl.map(p=>p.seasonLog.length)),holder:[...pl].sort((a,b)=>b.seasonLog.length-a.seasonLog.length)[0]?.name||'—',note:'All-time'},
+    {label:'Most Career Stat Titles',type:'career',value:safe(pl.map(p=>p.statLeads.length)),holder:[...pl].sort((a,b)=>b.statLeads.length-a.statLeads.length)[0]?.name||'—',note:'All-time'},
+    {label:'Highest HOF Score',type:'career',value:safe(pl.map(p=>getHofScore(p))),holder:[...pl].sort((a,b)=>getHofScore(b)-getHofScore(a))[0]?.name||'—',note:'Individual greatness metric'},
+    {label:'Most Peak Seasons',type:'career',value:safe(pl.map(p=>countPeakSeasons(p))),holder:[...pl].sort((a,b)=>countPeakSeasons(b)-countPeakSeasons(a))[0]?.name||'—',note:'MVP + 1st All-RFL same season'},
+    {label:'Most All-Star Wins',type:'career',value:safe(Object.values(allStarData).map(v=>v.wins||0)),holder:Object.entries(allStarData).sort((a,b)=>(b[1].wins||0)-(a[1].wins||0))[0]?.[0]||'—',note:'All-Star'},
+    {label:'Most All-Star Appearances',type:'career',value:safe(Object.values(allStarData).map(v=>v.apps||0)),holder:Object.entries(allStarData).sort((a,b)=>(b[1].apps||0)-(a[1].apps||0))[0]?.[0]||'—',note:'All-Star'},
+    {label:'Most Dunk Contest Wins',type:'career',value:safe(Object.values(allStarData).map(v=>v.dunk||0)),holder:Object.entries(allStarData).sort((a,b)=>(b[1].dunk||0)-(a[1].dunk||0))[0]?.[0]||'—',note:'All-Star'},
+    {label:'Most 3PT Contest Wins',type:'career',value:safe(Object.values(allStarData).map(v=>v.threepoint||0)),holder:Object.entries(allStarData).sort((a,b)=>(b[1].threepoint||0)-(a[1].threepoint||0))[0]?.[0]||'—',note:'All-Star'},
+  ];
+  const statCounts={};
+  seasons.forEach(s=>{Object.entries(s.statLeaders||{}).forEach(([cat,rawW])=>{const w=normName(rawW);if(!statCounts[cat])statCounts[cat]={};statCounts[cat][w]=(statCounts[cat][w]||0)+1;});});
+  seasonRecords=Object.entries(statCounts).map(([cat,counts])=>{const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]);return{label:`Most ${cat} Titles`,type:'season',value:sorted[0]?.[1]||0,holder:sorted[0]?.[0]||'—',note:'Season stat titles'};});
+  const maxWins=safe(seasons.map(s=>{const p=s.record?.split('-');return p?parseInt(p[0]):0;}));
+  const mws=seasons.find(s=>{const p=s.record?.split('-');return p&&parseInt(p[0])===maxWins;});
+  seasonRecords.unshift({label:'Most Wins in a Season',type:'season',value:maxWins,holder:mws?.champion||'—',note:`Season ${mws?.id||'?'}`});
+}
+
+function rebuildData(){
+  playerMap=buildPlayerMap();
+  allPlayers=Object.values(playerMap).sort((a,b)=>a.name.localeCompare(b.name));
+  hofInductees=computeHOF(playerMap);
+  buildCareerRecords(playerMap);
+}
+
+// ═══════════════════════════════════════════════
+// PAGER
+// ═══════════════════════════════════════════════
+function renderPagerBtns(btnsId,prevId,nextId,curPg,total,cb){
+  const el=document.getElementById(btnsId);const W=2;let h=`<button class="pb" id="${prevId}"${curPg<=1?' disabled':''}>‹ Prev</button>`;
+  const pages=[1];for(let i=Math.max(2,curPg-W);i<=Math.min(total-1,curPg+W);i++)pages.push(i);if(total>1)pages.push(total);
+  let last=0;for(const p of pages){if(p-last>1)h+=`<span class="pb-ellip">…</span>`;h+=`<button class="pb${p===curPg?' cur':''}" data-pg="${p}">${p}</button>`;last=p;}
+  h+=`<button class="pb" id="${nextId}"${curPg>=total?' disabled':''}>Next ›</button>`;
+  el.innerHTML=h;
+  el.querySelector('#'+prevId)?.addEventListener('click',()=>cb(curPg-1));
+  el.querySelector('#'+nextId)?.addEventListener('click',()=>cb(curPg+1));
+  el.querySelectorAll('[data-pg]').forEach(b=>b.addEventListener('click',()=>cb(parseInt(b.dataset.pg,10))));
+}
+
+// ═══════════════════════════════════════════════
+// SEASONS TAB
+// ═══════════════════════════════════════════════
+function getSeasonFilters(){
+  const tq=document.getElementById('f-team').value.trim().toLowerCase();
+  const sort=document.getElementById('f-sort').value;
+  let list=[...seasons];
+  if(tq)list=list.filter(s=>s.champion.toLowerCase().includes(tq)||s.defeated.toLowerCase().includes(tq)||(s.toty||'').toLowerCase().includes(tq)||(s.fmvp?normName(s.fmvp).toLowerCase().includes(tq):false)||(s.owners||[]).some(o=>normName(o).toLowerCase().includes(tq)));
+  return sort==='asc'?list.sort((a,b)=>a.id-b.id):list.sort((a,b)=>b.id-a.id);
+}
+function getPPSeasons(){const v=document.getElementById('f-pp').value;return v==='all'?999999:parseInt(v,10)||10;}
+function renderSeasons(){
+  const filt=getSeasonFilters(),pp=getPPSeasons();
+  const total=Math.max(1,Math.ceil(filt.length/pp));
+  if(pg>total)pg=total;
+  document.getElementById('seasons-ct').textContent=filt.length===seasons.length?`${seasons.length} season${seasons.length!==1?'s':''}`:`${filt.length}/${seasons.length}`;
+  const start=(pg-1)*pp,slice=pp>=999999?filt:filt.slice(start,start+pp);
+  const rowsEl=document.getElementById('hist-rows'),emptyEl=document.getElementById('hist-empty');
+  if(!filt.length){rowsEl.innerHTML='';emptyEl.style.display='block';document.getElementById('pager').style.display='none';return;}
+  emptyEl.style.display='none';
+  rowsEl.innerHTML=slice.map(s=>{
+    const lo=teamLogo(s.champion),dl=teamLogo(s.defeated);
+    const displayOwners=(s.owners||[]).map(normName);
+    return`<div class="hr ${eraClass(s.id)}" data-id="${s.id}" role="button" tabindex="0">
+      <span class="hn">${s.id}</span>
+      <span class="hm">
+        ${lo?`<img class="hm-logo" src="${lo}" alt="" loading="lazy">`:'<span class="hm-nolog"></span>'}
+        <span><div class="hm-champ">${s.champion}</div><div class="hm-sub">${displayOwners.slice(0,3).join(', ')}${displayOwners.length>3?` +${displayOwners.length-3}`:''}${!displayOwners.length?'—':''}</div></span>
+      </span>
+      <span class="hs">${s.record}</span>
+      <span class="hdef">${dl?`<img class="hm-logo" src="${dl}" alt="" loading="lazy" style="vertical-align:middle;margin-right:4px">`:''}${s.defeated}</span>
+      <span class="hser">${s.seriesResult}</span>
+      <span class="hdate">${s.toty||'—'}<span class="harrow">↗</span></span>
+      <span class="hfmvp">${s.fmvp?normName(s.fmvp):'—'}</span>
+    </div>`;
+  }).join('');
+  rowsEl.querySelectorAll('.hr').forEach(el=>{
+    const s=seasons.find(x=>x.id===parseInt(el.dataset.id,10));
+    el.addEventListener('click',()=>openSeasonModal(s));
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openSeasonModal(s);});
+  });
+  const pagerEl=document.getElementById('pager');
+  if(pp>=999999){pagerEl.style.display='none';return;}
+  pagerEl.style.display='flex';
+  document.getElementById('pg-info').textContent=`${start+1}–${Math.min(start+pp,filt.length)} of ${filt.length}`;
+  renderPagerBtns('pg-btns','p-prev','p-next',pg,total,p=>{pg=p;renderSeasons();});
+  const ji=document.getElementById('pg-jump');ji.max=total;ji.value=pg;
+}
+['f-team','f-sort','f-pp'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{pg=1;renderSeasons();}));
+document.getElementById('pg-jump').addEventListener('change',e=>{const v=parseInt(e.target.value,10),tot=Math.max(1,Math.ceil(getSeasonFilters().length/getPPSeasons()));if(v>=1&&v<=tot){pg=v;renderSeasons();}else e.target.value=pg;});
+
+function openSeasonModal(s){
+  if(!s)return;
+  const lo=teamLogo(s.champion),dl=teamLogo(s.defeated);
+  document.getElementById('m-matchup').innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px">${lo?`<img src="${lo}" alt="" style="width:32px;height:32px;object-fit:contain">`:''}<div><div class="mchamp-name">${s.champion}</div><div class="mchamp-rec">${s.record}</div></div></div>
+    <span class="msep">def.</span>
+    <div style="opacity:.7;display:flex;align-items:center;gap:8px">${dl?`<img src="${dl}" alt="" style="width:26px;height:26px;object-fit:contain;opacity:.6">`:''}
+    <div><div class="mdef-name">${s.defeated}</div><div class="mdef-rec">${s.defeatedRecord} · ${s.seriesResult}</div></div></div>`;
+  document.getElementById('m-season').textContent=`Season ${s.id}`;
+  const teamKeys=Object.keys(s.allRFL||{});
+  const allRplHtml=teamKeys.length?`<div class="allrpl-tabs" id="m-at">${teamKeys.map((k,i)=>`<button class="at-btn${i===0?' active':''}" onclick="mSwitchTeam('${k}',this)">${TEAM_KEYS[k]||k}</button>`).join('')}</div>${teamKeys.map((k,i)=>`<div id="m-allrpl-${k}" style="${i===0?'':'display:none'}"><table class="allrpl-tbl"><tbody>${(s.allRFL[k]||[]).map(p=>`<tr><td>${p.pos}</td><td>${normName(p.name)}</td></tr>`).join('')}</tbody></table></div>`).join('')}`:'<p style="font-size:12px;color:var(--mu)">Not recorded</p>';
+  const fmvpHtml=s.fmvp?`<div class="award-row"><span class="award-lbl">Finals MVP</span><span class="award-win fmvp">⭐ ${normName(s.fmvp)}</span></div>`:'';
+  const awardsHtml=fmvpHtml+Object.entries(s.awards||{}).map(([rawK,v])=>{const k=normAwardKey(rawK);return `<div class="award-row"><span class="award-lbl">${AWARD_LABELS[k]||k}</span><span class="award-win">${normName(v)}</span></div>`;}).join('');
+  const statHtml=s.statLeaders?`<div class="stat-grid">${Object.entries(s.statLeaders).map(([k,v])=>`<div class="stat-item"><div class="stat-lbl">${k}</div><div class="stat-val" style="color:var(--cy)">${normName(v)}</div></div>`).join('')}</div>`:'<p style="font-size:12px;color:var(--mu)">Not recorded</p>';
+  const champHtml=(s.owners||[]).length?`<div class="chip-list">${(s.owners||[]).map(o=>`<span class="chip">🏆 ${normName(o)}</span>`).join('')}</div>`:'';
+  document.getElementById('m-body').innerHTML=`
+    ${s.toty||s.fmvp?`<div style="display:flex;gap:8px;flex-wrap:wrap">${s.toty?`<div class="toty-row"><span class="toty-label">🏆 TOTY</span><span class="toty-val">${s.toty}</span></div>`:''}${s.fmvp?`<div class="fmvp-row"><span class="fmvp-row-label">⭐ Finals MVP</span><span class="fmvp-row-val">${normName(s.fmvp)}</span></div>`:''}</div>`:''}
+    ${champHtml}
+    <div class="minfo"><div class="icard"><div class="ilbl">🏅 Awards</div>${awardsHtml||'—'}</div><div class="icard"><div class="ilbl">⭐ All-RFL Teams</div>${allRplHtml}</div></div>
+    <div class="icard"><div class="ilbl">📊 Stat Leaders</div>${statHtml}</div>`;
+  document.getElementById('modal-bg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function mSwitchTeam(key,btn){
+  document.getElementById('m-at').querySelectorAll('.at-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[id^="m-allrpl-"]').forEach(el=>{el.style.display=el.id===`m-allrpl-${key}`?'':'none';});
+}
+function closeModal(){document.getElementById('modal-bg').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('m-close').addEventListener('click',closeModal);
+document.getElementById('modal-bg').addEventListener('click',e=>{if(e.target.id==='modal-bg')closeModal();});
+
+// ═══════════════════════════════════════════════
+// RECORDS TAB
+// ═══════════════════════════════════════════════
+function renderRecords(){
+  document.getElementById('records-grid').innerHTML=Object.values(records).map(r=>`<div class="rec-card"><div class="rec-stat">${r.label}</div><div class="rec-val">${r.value}</div><div class="rec-holder">${r.holder}</div><div class="rec-team">${r.team}</div></div>`).join('');
+  document.getElementById('career-records-grid').innerHTML=careerRecords.map(r=>`<div class="career-rec-card type-career"><div class="career-rec-stat">${r.label}</div><div class="career-rec-val career">${r.value}</div><div class="career-rec-holder">${r.holder}</div><div class="career-rec-note">${r.note||''}</div></div>`).join('');
+  document.getElementById('season-records-grid').innerHTML=seasonRecords.map(r=>`<div class="career-rec-card type-season"><div class="career-rec-stat">${r.label}</div><div class="career-rec-val season">${r.value}</div><div class="career-rec-holder">${r.holder}</div><div class="career-rec-note">${r.note||''}</div></div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+// ALL-STAR TAB
+// ═══════════════════════════════════════════════
+function getAllStarFiltered(){
+  const tq=document.getElementById('f-allstar').value.trim().toLowerCase();
+  const sort=document.getElementById('f-allstar-sort').value;
+  let list=Object.entries(allStarData).map(([name,data])=>({name,...data}));
+  if(tq)list=list.filter(p=>p.name.toLowerCase().includes(tq));
+  if(sort==='wins')list.sort((a,b)=>b.wins-a.wins||b.apps-a.apps);
+  else if(sort==='apps')list.sort((a,b)=>b.apps-a.apps||b.wins-a.wins);
+  else if(sort==='mvps')list.sort((a,b)=>b.mvps-a.mvps||b.wins-a.wins);
+  else if(sort==='dunk')list.sort((a,b)=>b.dunk-a.dunk);
+  else if(sort==='skills')list.sort((a,b)=>b.skills-a.skills);
+  else if(sort==='threepoint')list.sort((a,b)=>b.threepoint-a.threepoint);
+  return list;
+}
+function renderAllStar(){
+  const list=getAllStarFiltered();
+  document.getElementById('allstar-ct').textContent=`${Object.keys(allStarData).length} participants`;
+  const gridEl=document.getElementById('allstar-grid'),emptyEl=document.getElementById('allstar-empty');
+  if(!list.length){gridEl.innerHTML='';emptyEl.style.display='block';return;}
+  emptyEl.style.display='none';
+  gridEl.innerHTML=list.map(p=>`<div class="allstar-card" onclick="if(playerMap['${p.name}'])openPlayerModal(playerMap['${p.name}'])">
+    <div class="allstar-name">${p.name}</div>
+    <div class="allstar-stats">
+      <div class="allstar-stat"><span class="allstar-sv" style="color:var(--pink)">${p.apps}</span><span class="allstar-sl">Apps</span></div>
+      <div class="allstar-stat"><span class="allstar-sv" style="color:var(--gr)">${p.wins}</span><span class="allstar-sl">Wins</span></div>
+      ${p.mvps?`<div class="allstar-stat"><span class="allstar-sv" style="color:var(--pur)">${p.mvps}</span><span class="allstar-sl">MVP</span></div>`:''}
+      ${p.dunk?`<div class="allstar-stat"><span class="allstar-sv" style="color:var(--gold-hi)">${p.dunk}</span><span class="allstar-sl">Dunk</span></div>`:''}
+      ${p.skills?`<div class="allstar-stat"><span class="allstar-sv" style="color:var(--bl)">${p.skills}</span><span class="allstar-sl">Skls</span></div>`:''}
+      ${p.threepoint?`<div class="allstar-stat"><span class="allstar-sv" style="color:var(--cy)">${p.threepoint}</span><span class="allstar-sl">3PT</span></div>`:''}
+    </div>
+  </div>`).join('');
+  const makeLeaderboard=(title,key,color)=>{const sorted=Object.entries(allStarData).filter(([,v])=>v[key]>0).sort((a,b)=>b[1][key]-a[1][key]).slice(0,8);if(!sorted.length)return'';return`<div style="background:var(--s1);border:1px solid var(--b);border-radius:11px;overflow:hidden"><div style="padding:10px 14px;background:var(--s2);border-bottom:1px solid var(--b);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:${color}">${title}</div><table class="allstar-leader-tbl">${sorted.map(([name,data],i)=>`<tr><td>${i+1}</td><td>${name}</td><td style="color:${color}">${data[key]}</td></tr>`).join('')}</table></div>`;};
+  document.getElementById('allstar-leaderboards').innerHTML=[makeLeaderboard('All-Star Game Wins','wins','var(--gr)'),makeLeaderboard('All-Star Appearances','apps','var(--pink)'),makeLeaderboard('All-Star Game MVPs','mvps','var(--pur)'),makeLeaderboard('Dunk Contest Wins','dunk','var(--gold-hi)'),makeLeaderboard('Skills Challenge Wins','skills','var(--bl)'),makeLeaderboard('3PT Contest Wins','threepoint','var(--cy)')].filter(Boolean).join('');
+}
+['f-allstar','f-allstar-sort'].forEach(id=>document.getElementById(id).addEventListener('input',renderAllStar));
+
+// ═══════════════════════════════════════════════
+// HOF TAB
+// ═══════════════════════════════════════════════
+function getHofFilter(){
+  const tq=document.getElementById('f-hof').value.trim().toLowerCase();
+  const tier=document.getElementById('f-hof-tier').value;
+  const sort=document.getElementById('f-hof-sort').value;
+  let list=hofInductees.filter(p=>(!tq||p.name.toLowerCase().includes(tq))&&(tier==='all'||p.hofTier===tier));
+  if(sort==='mvp')list=[...list].sort((a,b)=>b.majorAwards.filter(x=>x.award==='MVP').length-a.majorAwards.filter(x=>x.award==='MVP').length||b.hofScore-a.hofScore);
+  else if(sort==='major')list=[...list].sort((a,b)=>b.majorAwards.length-a.majorAwards.length||b.hofScore-a.hofScore);
+  else if(sort==='fmvp')list=[...list].sort((a,b)=>b.fmvpAwards.length-a.fmvpAwards.length||b.hofScore-a.hofScore);
+  else if(sort==='allrpl')list=[...list].sort((a,b)=>b.allRFL-a.allRFL||b.hofScore-a.hofScore);
+  else if(sort==='rings')list=[...list].sort((a,b)=>b.rings-a.rings||b.hofScore-a.hofScore);
+  else list=[...list].sort((a,b)=>b.hofScore-a.hofScore);
+  return list;
+}
+const PG_HOF=10;
+function renderHOF(){hofInductees=computeHOF(playerMap);renderHOFRows();renderHOFScoringExplain();}
+function renderHOFRows(){
+  const filt=getHofFilter();const total=Math.max(1,Math.ceil(filt.length/PG_HOF));if(pgHof>total)pgHof=total;
+  const start=(pgHof-1)*PG_HOF,slice=filt.slice(start,start+PG_HOF);
+  const hofCount=hofInductees.filter(p=>p.hofTier==='hof').length;
+  document.getElementById('hof-ct').textContent=`${hofCount} inductee${hofCount!==1?'s':''}`;
+  const rowsEl=document.getElementById('hof-rows');
+  if(!filt.length){rowsEl.innerHTML=`<div class="hist-empty">No players match.</div>`;document.getElementById('pager-hof').style.display='none';return;}
+  let html='',lastTier=null;
+  slice.forEach((p,i)=>{
+    const rank=start+i+1;
+    if(p.hofTier!==lastTier){if(p.hofTier==='ring-of-honor'){html+=`<div class="hof-section-divider roh">🏅 Ring of Honor</div>`;}lastTier=p.hofTier;}
+    const as=allStarData[p.name]||{apps:0};const sc=scoreColor(p.hofScore);const mvpCount=p.majorAwards.filter(a=>a.award==='MVP').length;const peakCount=countPeakSeasons(p);
+    const badges=[mvpCount?`<span class="hof-badge gold">🏆 ${mvpCount}× MVP</span>`:'', ...p.fmvpAwards.map(a=>`<span class="hof-badge purple">S${a.season} FMVP</span>`),...p.majorAwards.filter(a=>a.award!=='MVP').map(a=>`<span class="hof-badge green">S${a.season} ${a.award}</span>`),peakCount?`<span class="hof-badge orange">⚡ ${peakCount}× Peak</span>`:'',p.statLeads.length?`<span class="hof-badge cyan">📊 ×${p.statLeads.length}</span>`:'',p.allRFL?`<span class="hof-badge blue">All-RFL ×${p.allRFL}</span>`:'',as.wins?`<span class="hof-badge pink">⭐ AS ×${as.wins}</span>`:''].filter(Boolean).join('');
+    html+=`<div class="hof-ind-row tier-${p.hofTier}" data-name="${p.name}" role="button" tabindex="0">
+      <span class="hof-rn">${rank}</span>
+      <span><div class="hof-name">${p.name}<span class="hof-harrow">↗</span></div><div class="hof-name-sub"><span class="hof-tier-badge ${p.hofTier}">${tierLabel(p.hofTier)}</span>${peakCount?` <span class="peak-badge">⚡ ${peakCount}× Peak</span>`:''}</div></span>
+      <span class="hof-mvps" style="color:var(--gold-hi)">${mvpCount||'—'}</span>
+      <span class="hof-mvps">${p.majorAwards.length||'—'}</span>
+      <span class="hof-fmvps">${p.fmvpAwards.length?`<span style="color:var(--pur)">⭐ ×${p.fmvpAwards.length}</span>`:'—'}</span>
+      <span class="hof-mvps" style="color:var(--bl)">${p.allRFL||'—'}</span>
+      <span class="hof-score-cell"><span style="color:${sc}">${p.hofScore}</span><div class="hof-score-bar"><div class="hof-score-fill" style="width:${Math.min(100,p.hofScore*1.2)}%;background:${sc}"></div></div></span>
+      <span class="hof-awards-cell"><div class="hof-badge-wrap">${badges}</div></span>
+    </div>`;
+  });
+  rowsEl.innerHTML=html;
+  rowsEl.querySelectorAll('.hof-ind-row').forEach(el=>{const p=playerMap[el.dataset.name];el.addEventListener('click',()=>openPlayerModal(p));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openPlayerModal(p);});});
+  const pagerEl=document.getElementById('pager-hof');if(total<=1){pagerEl.style.display='none';return;}
+  pagerEl.style.display='flex';document.getElementById('pg-info-hof').textContent=`${start+1}–${Math.min(start+PG_HOF,filt.length)} of ${filt.length}`;
+  renderPagerBtns('pg-btns-hof','p-prev-hof','p-next-hof',pgHof,total,p=>{pgHof=p;renderHOFRows();});
+  document.getElementById('pg-jump-hof').max=total;document.getElementById('pg-jump-hof').value=pgHof;
+}
+['f-hof','f-hof-tier','f-hof-sort'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{pgHof=1;renderHOFRows();}));
+document.getElementById('pg-jump-hof').addEventListener('change',e=>{const v=parseInt(e.target.value,10),tot=Math.max(1,Math.ceil(getHofFilter().length/PG_HOF));if(v>=1&&v<=tot){pgHof=v;renderHOFRows();}else e.target.value=pgHof;});
+function renderHOFScoringExplain(){
+  document.getElementById('hof-scoring-grid').innerHTML=HOF_SCORE_LABELS.map(item=>`<div style="background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--tx2)">${item.label}</span><span class="hof-badge ${item.color}">+${item.pts} pts</span></div>`).join('')+`<div style="background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:10px 12px;grid-column:1/-1"><div style="font-size:10px;color:var(--mu);margin-bottom:6px">HOF Thresholds</div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="hof-tier-badge hof">HOF ≥${HOF_THRESHOLD_HOF} pts</span><span class="hof-tier-badge ring-of-honor">Ring of Honor ≥${HOF_THRESHOLD_ROH} pts</span><span class="hof-tier-badge not-eligible">Not Eligible &lt;${HOF_THRESHOLD_ROH} pts</span></div></div>`;
+}
+
+// ═══════════════════════════════════════════════
+// PLAYERS TAB
+// ═══════════════════════════════════════════════
+function getPlayerFilters(){
+  const tq=document.getElementById('f-player').value.trim().toLowerCase();
+  const sort=document.getElementById('f-player-sort').value;
+  let list=tq?allPlayers.filter(p=>p.name.toLowerCase().includes(tq)):[...allPlayers];
+  if(sort==='major')list.sort((a,b)=>b.majorAwards.length-a.majorAwards.length||b.allRFL-a.allRFL);
+  else if(sort==='allrpl')list.sort((a,b)=>b.allRFL-a.allRFL);
+  else if(sort==='rings')list.sort((a,b)=>b.rings-a.rings);
+  else if(sort==='fmvp')list.sort((a,b)=>b.fmvpAwards.length-a.fmvpAwards.length);
+  else if(sort==='stat')list.sort((a,b)=>b.statLeads.length-a.statLeads.length);
+  else if(sort==='allstar')list.sort((a,b)=>(allStarData[b.name]?.wins||0)-(allStarData[a.name]?.wins||0));
+  else if(sort==='hofscore')list.sort((a,b)=>getHofScore(b)-getHofScore(a));
+  else list.sort((a,b)=>a.name.localeCompare(b.name));
+  return list;
+}
+function getPPPlayers(){const v=document.getElementById('f-player-pp').value;return v==='all'?999999:parseInt(v,10)||24;}
+function renderPlayers(){
+  const filt=getPlayerFilters(),pp=getPPPlayers();
+  const total=Math.max(1,Math.ceil(filt.length/pp));if(pgPlayers>total)pgPlayers=total;
+  document.getElementById('players-ct').textContent=filt.length===allPlayers.length?`${allPlayers.length} players`:`${filt.length}/${allPlayers.length}`;
+  const start=(pgPlayers-1)*pp,slice=pp>=999999?filt:filt.slice(start,start+pp);
+  const gridEl=document.getElementById('players-grid'),emptyEl=document.getElementById('players-empty');
+  if(!filt.length){gridEl.innerHTML='';emptyEl.style.display='block';document.getElementById('pager-players').style.display='none';return;}
+  emptyEl.style.display='none';
+  const hofNames=new Set(hofInductees.filter(p=>p.hofTier==='hof').map(p=>p.name));
+  const rohNames=new Set(hofInductees.filter(p=>p.hofTier==='ring-of-honor').map(p=>p.name));
+  gridEl.innerHTML=slice.map(p=>{
+    const tier=playerTier(p);const as=allStarData[p.name]||{wins:0};const hofScore=getHofScore(p);const mvpCount=p.majorAwards.filter(a=>a.award==='MVP').length;const peakCount=countPeakSeasons(p);
+    const miniBadges=[mvpCount?`<span class="hof-badge gold">🏆 ${mvpCount}× MVP</span>`:'',p.fmvpAwards.length?`<span class="hof-badge purple">FMVP ×${p.fmvpAwards.length}</span>`:'',peakCount?`<span class="hof-badge orange">⚡ Peak ×${peakCount}</span>`:'',p.allRFL?`<span class="hof-badge blue">All-RFL ×${p.allRFL}</span>`:'',p.rings?`<span class="hof-badge gold">Ring ×${p.rings}</span>`:'',hofNames.has(p.name)?`<span class="hof-badge green">HOF</span>`:'',rohNames.has(p.name)?`<span class="hof-badge silver">Ring of Honor</span>`:''].filter(Boolean).join('');
+    return`<div class="player-card tier-${tier}" data-name="${p.name}" role="button" tabindex="0">
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-seasons">${p.seasonLog.length} season${p.seasonLog.length!==1?'s':''} · HOF ${hofScore}</div>
+      <div class="pc-stats">
+        <div class="pc-stat"><span class="pc-sv" style="color:var(--gold-hi)">${mvpCount}</span><span class="pc-sl">MVP</span></div>
+        <div class="pc-stat"><span class="pc-sv">${p.majorAwards.length}</span><span class="pc-sl">Major</span></div>
+        <div class="pc-stat"><span class="pc-sv" style="color:var(--pur)">${p.fmvpAwards.length}</span><span class="pc-sl">FMVP</span></div>
+        <div class="pc-stat"><span class="pc-sv">${p.allRFL}</span><span class="pc-sl">All-RFL</span></div>
+        <div class="pc-stat"><span class="pc-sv" style="color:var(--or)">${peakCount}</span><span class="pc-sl">Peak</span></div>
+        <div class="pc-stat"><span class="pc-sv" style="color:var(--tx2)">${p.rings}</span><span class="pc-sl">Rings</span></div>
+      </div>
+      <div class="pc-badges">${miniBadges}</div>
+    </div>`;
+  }).join('');
+  gridEl.querySelectorAll('.player-card').forEach(el=>{const p=playerMap[el.dataset.name];el.addEventListener('click',()=>openPlayerModal(p));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openPlayerModal(p);});});
+  const pagerEl=document.getElementById('pager-players');if(pp>=999999){pagerEl.style.display='none';return;}
+  pagerEl.style.display='flex';document.getElementById('pg-info-players').textContent=`${start+1}–${Math.min(start+pp,filt.length)} of ${filt.length}`;
+  renderPagerBtns('pg-btns-players','p-prev-pl','p-next-pl',pgPlayers,total,p=>{pgPlayers=p;renderPlayers();});
+  document.getElementById('pg-jump-players').max=total;document.getElementById('pg-jump-players').value=pgPlayers;
+}
+['f-player','f-player-sort','f-player-pp'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{pgPlayers=1;renderPlayers();}));
+document.getElementById('pg-jump-players').addEventListener('change',e=>{const v=parseInt(e.target.value,10),tot=Math.max(1,Math.ceil(getPlayerFilters().length/getPPPlayers()));if(v>=1&&v<=tot){pgPlayers=v;renderPlayers();}else e.target.value=pgPlayers;});
+
+// ═══════════════════════════════════════════════
+// PLAYER PROFILE MODAL
+// ═══════════════════════════════════════════════
+function openPlayerModal(p){
+  if(!p)return;
+  const hofEntry=hofInductees.find(h=>h.name===p.name);const hofScore=getHofScore(p);const{breakdown}=computeHofScore(p);
+  const tier=hofEntry?hofEntry.hofTier:hofTier(hofScore,p,hofManualInductions[p.name]?.tier);
+  const as=allStarData[p.name]||{apps:0,wins:0,mvps:0,dunk:0,skills:0,threepoint:0};
+  const showHofBadge=tier==='hof'||tier==='ring-of-honor';const mvpCount=p.majorAwards.filter(a=>a.award==='MVP').length;const peakCount=countPeakSeasons(p);
+  document.getElementById('pm-header').innerHTML=`<div><div class="prf-name">${p.name}</div><div class="prf-sub">${p.seasonLog.length} season${p.seasonLog.length!==1?'s':''} active · ${p.allRFL} All-RFL${peakCount?` · ⚡ ${peakCount} peak`:''}${p.rings>0?` · ${p.rings} ring${p.rings!==1?'s':''}`:''}${p.rings===0?' · No rings':''}</div>${showHofBadge?`<div class="prf-hof-badge${tier==='ring-of-honor'?' roh':''}">${tier==='hof'?'⭐ Hall of Fame':'🏅 Ring of Honor'} · ${hofScore} pts</div>`:''}</div>`;
+  document.getElementById('pm-badge').textContent=p.rings>0?`${p.rings} Ring${p.rings!==1?'s':''}`:'No Rings';
+  const bigStats=`<div class="prf-stat-row">
+    <div class="prf-big-stat"><span class="prf-bsv" style="color:var(--gold-hi)">${mvpCount}</span><span class="prf-bsl">MVPs</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv">${p.majorAwards.length}</span><span class="prf-bsl">Major</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv pur">${p.fmvpAwards.length}</span><span class="prf-bsl">FMVP</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv">${p.allRFL}</span><span class="prf-bsl">All-RFL</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv or">${peakCount}</span><span class="prf-bsl">Peak Ssn</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv cy">${p.statLeads.length}</span><span class="prf-bsl">Stat Ttls</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv pink">${as.wins}</span><span class="prf-bsl">AS Wins</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv" style="color:var(--tx2);font-size:22px">${p.rings}</span><span class="prf-bsl">Rings</span></div>
+    <div class="prf-big-stat"><span class="prf-bsv" style="color:${scoreColor(hofScore)}">${hofScore}</span><span class="prf-bsl">HOF Pts</span></div>
+  </div>`;
+  const majorHtml=p.majorAwards.length?p.majorAwards.map(a=>{const isPeakSeason=a.award==='MVP'&&p.seasonLog.find(sl=>sl.season===a.season&&sl.allRFLTeams.includes('1st'));return`<div class="award-row"><span class="award-lbl">S${a.season} · ${a.label}${isPeakSeason?' <span class="peak-badge">⚡ Peak</span>':''}</span><span class="award-win" style="color:var(--gold-hi)">${a.award}</span></div>`;}).join(''):'<p style="font-size:12px;color:var(--mu)">None</p>';
+  const fmvpHtml=p.fmvpAwards.length?`<div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--b2)"><div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pur);margin-bottom:6px">Finals MVP</div>${p.fmvpAwards.map(a=>`<div class="award-row"><span class="award-lbl">S${a.season}</span><span class="award-win fmvp">⭐ FMVP</span></div>`).join('')}</div>`:'';
+  const minorHtml=p.minorAwards.length?p.minorAwards.map(a=>`<div class="award-row"><span class="award-lbl">S${a.season} · ${a.label}</span><span class="award-win">${a.award}</span></div>`).join(''):'<p style="font-size:12px;color:var(--mu)">None</p>';
+  const statHtml=p.statLeads.length?`<div class="stat-awards-section"><div class="stat-awards-label">📊 Stat Titles</div>${p.statLeads.map(sl=>`<div class="award-row"><span class="award-lbl">S${sl.season} · ${sl.cat}</span><span class="award-win stat">${statShort(sl.cat)}</span></div>`).join('')}</div>`:'';
+  const hasAS=as.apps>0||as.dunk>0||as.skills>0||as.threepoint>0||as.mvps>0;
+  const allStarHtml=hasAS?`<div class="icard"><div class="ilbl">🌟 All-Star Career</div><div style="display:flex;gap:8px;flex-wrap:wrap">${[as.apps?`<div class="pc-stat"><span class="pc-sv" style="color:var(--pink)">${as.apps}</span><span class="pc-sl">Apps</span></div>`:'',as.wins?`<div class="pc-stat"><span class="pc-sv" style="color:var(--gr)">${as.wins}</span><span class="pc-sl">Wins</span></div>`:'',as.mvps?`<div class="pc-stat"><span class="pc-sv" style="color:var(--pur)">${as.mvps}</span><span class="pc-sl">MVPs</span></div>`:'',as.dunk?`<div class="pc-stat"><span class="pc-sv" style="color:var(--gold-hi)">${as.dunk}</span><span class="pc-sl">Dunk</span></div>`:'',as.skills?`<div class="pc-stat"><span class="pc-sv" style="color:var(--bl)">${as.skills}</span><span class="pc-sl">Skills</span></div>`:'',as.threepoint?`<div class="pc-stat"><span class="pc-sv" style="color:var(--cy)">${as.threepoint}</span><span class="pc-sl">3PT</span></div>`:''].filter(Boolean).join('')}</div></div>`:'';
+  const breakdownHtml=Object.keys(breakdown).length?`<div class="hof-breakdown"><div class="hof-breakdown-title">Score Breakdown</div>${Object.entries(breakdown).map(([k,v])=>`<div class="hof-breakdown-row"><span class="hof-breakdown-label">${k}</span><span class="hof-breakdown-pts" style="color:${scoreColor(hofScore)}">+${v}</span></div>`).join('')}<div class="hof-breakdown-row" style="border-top:1px solid var(--b);margin-top:4px;padding-top:4px"><span class="hof-breakdown-label" style="font-weight:700;color:var(--tx)">Total</span><span class="hof-breakdown-pts" style="color:${scoreColor(hofScore)};font-size:13px">${hofScore} pts</span></div></div>`:'';
+  const hofBar=`<div class="icard"><div class="ilbl">⭐ HOF Score: <span style="color:${scoreColor(hofScore)}">${hofScore}</span> · <span class="hof-tier-badge ${tier}">${tierLabel(tier)}</span></div><div class="hof-score-bar" style="height:6px;margin-top:6px"><div class="hof-score-fill" style="width:${Math.min(100,hofScore*1.2)}%;background:${scoreColor(hofScore)}"></div></div>${breakdownHtml}</div>`;
+  const logRows=p.seasonLog.sort((a,b)=>a.season-b.season).map(row=>{
+    const isPeakSeason=row.awards.includes('MVP')&&row.allRFLTeams.includes('1st');
+    const chips=[row.ring?`<span class="tl-award ring">🏆 Champ</span>`:'',row.fmvp?`<span class="tl-award fmvp">⭐ FMVP</span>`:'',isPeakSeason?`<span class="tl-award peak">⚡ Peak</span>`:'',...row.awards.filter(k=>MAJOR_AWARDS.includes(k)).map(k=>`<span class="tl-award major">${k}</span>`),...row.awards.filter(k=>MINOR_AWARDS.includes(k)).map(k=>`<span class="tl-award minor">${k}</span>`),...row.allRFLTeams.map(t=>`<span class="tl-award allrpl">${t}</span>`),...row.statLeads.map(c=>`<span class="tl-award stat">${statShort(c)}</span>`)].filter(Boolean).join('');
+    return`<tr><td>S${row.season}</td><td style="text-align:left">${row.champion}</td><td style="text-align:left">${chips||'<span style="color:var(--mu);font-size:10px">—</span>'}</td></tr>`;
+  }).join('');
+  document.getElementById('pm-body').innerHTML=`${bigStats}${hofBar}<div class="minfo"><div class="icard"><div class="ilbl">🥇 Major Awards</div>${majorHtml}</div><div class="icard"><div class="ilbl">🎖 Minor & Finals</div>${fmvpHtml}${minorHtml}${statHtml}</div></div>${allStarHtml}<div class="icard"><div class="ilbl">📅 Season Log</div><div class="tbl-wrap"><table class="season-log-tbl"><thead><tr><th>Season</th><th style="text-align:left">Champion</th><th style="text-align:left">Achievements</th></tr></thead><tbody>${logRows||'<tr><td colspan="3" style="color:var(--mu)">No records</td></tr>'}</tbody></table></div></div>`;
+  document.getElementById('player-modal-bg').classList.add('open');document.body.style.overflow='hidden';
+}
+function closePlayerModal(){document.getElementById('player-modal-bg').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('pm-close').addEventListener('click',closePlayerModal);
+document.getElementById('player-modal-bg').addEventListener('click',e=>{if(e.target.id==='player-modal-bg')closePlayerModal();});
+
+// ═══════════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════════
+function showTab(tab,el){
+  currentTab=tab;
+  ['seasons','records','allstar','hof','players','admin'].forEach(t=>document.getElementById('pane-'+t)?.classList.toggle('hidden',t!==tab));
+  document.querySelectorAll('.kc[data-tab]').forEach(k=>k.classList.toggle('active',k.dataset.tab===tab));
+  if(tab==='records')renderRecords();
+  if(tab==='allstar')renderAllStar();
+  if(tab==='hof')renderHOF();
+  if(tab==='players')renderPlayers();
+  if(tab==='admin'&&isAdmin)renderAdminOverview();
+}
+
+// ═══════════════════════════════════════════════
+// SEASON FORM
+// ═══════════════════════════════════════════════
+function parseAllRplField(val){if(!val||!val.trim())return[];return val.split(',').map(entry=>{const parts=entry.trim().split(':');const name=parts[0]?.trim()||'';const pos=parts[1]?.trim()||'—';return name?{name,pos}:null;}).filter(Boolean);}
+function allRplToString(arr){if(!arr||!arr.length)return'';return arr.map(p=>`${p.name}:${p.pos}`).join(', ');}
+function closeAddOverlay(){document.getElementById('add-overlay').classList.remove('show');document.getElementById('edit-season-id').value='';document.getElementById('add-modal-title').textContent='Add New Season';document.getElementById('save-season-btn').textContent='Save Season';}
+
+function openAddSeason(){
+  if(!isAdmin){toast('Login as admin first','amber');return;}
+  ['f-id','f-champ','f-rec','f-def','f-drec','f-series','f-owners','f-toty','f-fmvp','f-mvp','f-opoty','f-dpoy','f-pmoty','f-roty','f-mip','f-cpoty','f-5moty','f-stats','f-allrpl-1st','f-allrpl-2nd','f-allrpl-3rd','f-allrpl-def'].forEach(id=>{document.getElementById(id).value='';});
+  document.getElementById('edit-season-id').value='';
+  document.getElementById('add-modal-title').textContent='Add New Season';
+  document.getElementById('save-season-btn').textContent='Save Season';
+  document.getElementById('add-overlay').classList.add('show');
+}
+
+function openEditSeason(id){
+  if(!isAdmin)return;
+  const s=seasons.find(x=>x.id===id);if(!s)return;
+  const g=(fid,val)=>{const el=document.getElementById(fid);if(el)el.value=val||'';};
+  g('edit-season-id',s.id);g('f-id',s.id);g('f-champ',s.champion);g('f-rec',s.record);g('f-def',s.defeated);g('f-drec',s.defeatedRecord);g('f-series',s.seriesResult);g('f-owners',(s.owners||[]).join(', '));g('f-toty',s.toty);g('f-fmvp',s.fmvp);
+  g('f-mvp',s.awards?.MVP||'');g('f-opoty',s.awards?.OPOTY||'');g('f-dpoy',s.awards?.DPOY||'');g('f-pmoty',s.awards?.PMOTY||'');g('f-roty',s.awards?.ROTY||'');g('f-mip',s.awards?.MIP||'');g('f-cpoty',s.awards?.CPOTY||'');g('f-5moty',s.awards?.['5MOTY']||s.awards?.['4MOTY']||'');
+  const statStr=s.statLeaders?Object.entries(s.statLeaders).map(([k,v])=>`${k}:${v}`).join(', '):'';g('f-stats',statStr);
+  g('f-allrpl-1st',allRplToString(s.allRFL?.first));g('f-allrpl-2nd',allRplToString(s.allRFL?.second));g('f-allrpl-3rd',allRplToString(s.allRFL?.third));g('f-allrpl-def',allRplToString(s.allRFL?.defensive));
+  document.getElementById('add-modal-title').textContent=`Edit Season ${s.id}`;
+  document.getElementById('save-season-btn').textContent='Update Season';
+  document.getElementById('add-overlay').classList.add('show');
+}
+
+async function saveSeasonForm(){
+  const g=id=>document.getElementById(id).value.trim();
+  const editingId=g('edit-season-id');
+  const statsRaw=g('f-stats');
+  const statLeaders={};
+  if(statsRaw)statsRaw.split(',').forEach(part=>{const idx=part.indexOf(':');if(idx>0){const k=part.slice(0,idx).trim();const v=part.slice(idx+1).trim();if(k&&v)statLeaders[k]=v;}});
+  const editSeason=editingId?seasons.find(x=>x.id===parseInt(editingId)):null;
+  const motyVal=g('f-5moty');
+  const newS={
+    id:parseInt(g('f-id'))||(editingId?parseInt(editingId):seasons.length+1),
+    champion:g('f-champ'),record:g('f-rec'),defeated:g('f-def'),defeatedRecord:g('f-drec'),seriesResult:g('f-series'),
+    owners:g('f-owners').split(',').map(s=>s.trim()).filter(Boolean),
+    toty:g('f-toty')||null,fmvp:g('f-fmvp')||null,
+    awards:{},allRFL:{},
+    ...(Object.keys(statLeaders).length?{statLeaders}:{}),
+  };
+  const awardMap={MVP:'f-mvp',OPOTY:'f-opoty',DPOY:'f-dpoy',PMOTY:'f-pmoty',ROTY:'f-roty',MIP:'f-mip',CPOTY:'f-cpoty'};
+  Object.entries(awardMap).forEach(([k,fid])=>{const v=g(fid);if(v)newS.awards[k]=v;});
+  if(motyVal)newS.awards['5MOTY']=motyVal;
+  const ar1=parseAllRplField(g('f-allrpl-1st'));const ar2=parseAllRplField(g('f-allrpl-2nd'));const ar3=parseAllRplField(g('f-allrpl-3rd'));const ard=parseAllRplField(g('f-allrpl-def'));
+  if(ar1.length)newS.allRFL.first=ar1;if(ar2.length)newS.allRFL.second=ar2;if(ar3.length)newS.allRFL.third=ar3;if(ard.length)newS.allRFL.defensive=ard;
+  setDbStatus('saving');
+  let result;
+  if(editingId){
+    result=await apiPut(`/seasons?id=${editingId}`,newS);
+  }else{
+    result=await apiPost('/seasons',newS);
+  }
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Save failed','amber');return;}
+  setDbStatus('saved');
+  // Refresh seasons from API
+  const data=await apiGet('/seasons');
+  if(data?.seasons)seasons=data.seasons;
+  rebuildData();updateHeroStats();renderSeasons();
+  if(isAdmin)renderAdminSeasons();
+  closeAddOverlay();
+  toast(editingId?`Season ${newS.id} updated`:`Season ${newS.id} added`,'green');
+}
+
+// ═══════════════════════════════════════════════
+// ADMIN PANEL
+// ═══════════════════════════════════════════════
+function switchAdminPane(id,btn){
+  document.querySelectorAll('.admin-nav-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.admin-pane').forEach(p=>p.classList.remove('active'));document.getElementById('apane-'+id)?.classList.add('active');
+  if(id==='overview')renderAdminOverview();
+  else if(id==='seasons-mgmt')renderAdminSeasons();
+  else if(id==='hof-mgmt')renderAdminHof();
+  else if(id==='records-mgmt')renderAdminRecords();
+  else if(id==='allstar-mgmt')renderAdminAllStar();
+  else if(id==='archived')renderAdminArchived();
+  else if(id==='analytics')renderAdminAnalytics();
+}
+function renderAdminOverview(){
+  const hofCount=hofInductees.filter(p=>p.hofTier==='hof').length;const rohCount=hofInductees.filter(p=>p.hofTier==='ring-of-honor').length;
+  document.getElementById('admin-overview-cards').innerHTML=`
+    <div class="admin-stat-card"><div class="admin-stat-card-val">${seasons.length}</div><div class="admin-stat-card-lbl">Seasons</div></div>
+    <div class="admin-stat-card"><div class="admin-stat-card-val">${allPlayers.length}</div><div class="admin-stat-card-lbl">Players</div></div>
+    <div class="admin-stat-card"><div class="admin-stat-card-val" style="color:var(--gold-hi)">${hofCount}</div><div class="admin-stat-card-lbl">HOF Inductees</div></div>
+    <div class="admin-stat-card"><div class="admin-stat-card-val" style="color:var(--silver)">${rohCount}</div><div class="admin-stat-card-lbl">Ring of Honor</div></div>
+    <div class="admin-stat-card"><div class="admin-stat-card-val" style="color:var(--pink)">${Object.values(allStarData).reduce((a,v)=>a+(v.apps||0),0)}</div><div class="admin-stat-card-lbl">AS Appearances</div></div>
+    <div class="admin-stat-card"><div class="admin-stat-card-val">${new Set(seasons.map(s=>s.champion)).size}</div><div class="admin-stat-card-lbl">Unique Champs</div></div>`;
+  document.getElementById('admin-quick').innerHTML=`<div style="margin-top:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Quick Actions</div><div style="display:flex;flex-direction:column;gap:6px"><button class="admin-nav-btn" onclick="openAddSeason()" style="justify-content:flex-start">➕ Add New Season</button><button class="admin-nav-btn" onclick="seedDB()" style="justify-content:flex-start">🌱 Seed DB (if empty)</button></div></div>`;
+}
+function renderAdminSeasons(){
+  document.getElementById('admin-seasons-tbody').innerHTML=[...seasons].reverse().map(s=>`<tr>
+    <td>S${s.id}</td><td>${s.champion}</td>
+    <td style="font-family:'JetBrains Mono',monospace">${s.record}</td>
+    <td style="color:var(--pur)">${s.fmvp?normName(s.fmvp):'—'}</td>
+    <td style="color:var(--gold-hi)">${s.awards?.MVP?normName(s.awards.MVP):'—'}</td>
+    <td>
+      <button class="admin-btn" onclick="openSeasonModal(seasons.find(x=>x.id===${s.id}))">View</button>
+      <button class="admin-btn success" onclick="openEditSeason(${s.id})" style="margin-left:4px">Edit</button>
+      <button class="admin-btn amber" onclick="archiveSeason(${s.id})" style="margin-left:4px">Archive</button>
+      <button class="admin-btn danger" onclick="deleteSeason(${s.id})" style="margin-left:4px">Del</button>
+    </td>
+  </tr>`).join('');
+}
+async function deleteSeason(id){
+  if(!confirm(`Delete Season ${id}? This cannot be undone.`))return;
+  setDbStatus('saving');
+  const result=await apiDel(`/seasons?id=${id}`);
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Delete failed','amber');return;}
+  seasons=seasons.filter(s=>s.id!==id);
+  rebuildData();updateHeroStats();renderSeasons();renderAdminSeasons();
+  setDbStatus('saved');toast(`Season ${id} deleted`,'amber');
+}
+async function archiveSeason(id){
+  if(!confirm(`Archive Season ${id}? It can be restored later.`))return;
+  setDbStatus('saving');
+  const result=await apiPost(`/seasons?action=archive&id=${id}`,{});
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Archive failed','amber');return;}
+  seasons=seasons.filter(s=>s.id!==id);
+  rebuildData();updateHeroStats();renderSeasons();renderAdminSeasons();
+  setDbStatus('saved');toast(`Season ${id} archived`,'amber');
+}
+async function restoreSeason(id){
+  setDbStatus('saving');
+  const result=await apiPost(`/seasons?action=restore&id=${id}`,{});
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Restore failed','amber');return;}
+  const data=await apiGet('/seasons');
+  if(data?.seasons)seasons=data.seasons;
+  rebuildData();updateHeroStats();renderSeasons();renderAdminArchived();
+  setDbStatus('saved');toast(`Season ${id} restored`,'green');
+}
+async function renderAdminArchived(){
+  const data=await apiGet('/seasons');
+  const archived=data?.archived||[];
+  document.getElementById('admin-archived-tbody').innerHTML=archived.length?archived.map(s=>`<tr>
+    <td>S${s.id}</td><td>${s.champion}</td>
+    <td style="color:var(--mu);font-size:10px">${s._archivedAt?new Date(s._archivedAt).toLocaleDateString():'—'}</td>
+    <td>
+      <button class="admin-btn success" onclick="restoreSeason(${s.id})">Restore</button>
+    </td>
+  </tr>`).join(''):`<tr><td colspan="4" style="color:var(--mu);text-align:center;padding:20px">No archived seasons.</td></tr>`;
+}
+
+async function renderAdminHof(){
+  hofInductees=computeHOF(playerMap);
+  const hofMembers=hofInductees.filter(p=>p.hofTier==='hof');const rohMembers=hofInductees.filter(p=>p.hofTier==='ring-of-honor');
+  document.getElementById('admin-hof-tbody').innerHTML=[
+    ...hofMembers.map(p=>`<tr><td>${p.name}</td><td><span class="hof-tier-badge hof">HOF</span></td><td style="color:${scoreColor(p.hofScore)};font-family:'JetBrains Mono',monospace;text-align:center">${p.hofScore}</td><td style="text-align:center;color:var(--gold-hi)">${p.majorAwards.filter(a=>a.award==='MVP').length}</td><td style="text-align:center">${p.majorAwards.length}</td><td style="text-align:center;color:var(--bl)">${p.allRFL}</td><td><button class="admin-btn danger" onclick="removeFromHof('${p.name}')">Remove</button></td></tr>`),
+    ...rohMembers.map(p=>`<tr><td>${p.name}</td><td><span class="hof-tier-badge ring-of-honor">RoH</span></td><td style="color:${scoreColor(p.hofScore)};font-family:'JetBrains Mono',monospace;text-align:center">${p.hofScore}</td><td style="text-align:center;color:var(--gold-hi)">${p.majorAwards.filter(a=>a.award==='MVP').length}</td><td style="text-align:center">${p.majorAwards.length}</td><td style="text-align:center;color:var(--bl)">${p.allRFL}</td><td><button class="admin-btn danger" onclick="removeFromHof('${p.name}')">Remove</button></td></tr>`),
+  ].join('');
+  const inducted=new Set(hofInductees.map(p=>p.name));
+  const candidates=Object.values(playerMap).filter(p=>!inducted.has(p.name)&&!hofManualRemovals.has(p.name)).map(p=>({...p,hofScore:getHofScore(p)})).filter(p=>p.hofScore>=15).sort((a,b)=>b.hofScore-a.hofScore).slice(0,15);
+  document.getElementById('hof-candidates-list').innerHTML=candidates.map(p=>`<div class="hof-candidate-row"><span>${p.name}</span><span style="text-align:center;color:${scoreColor(p.hofScore)};font-family:'JetBrains Mono',monospace">${p.hofScore}</span><span style="text-align:center"><span class="hof-tier-badge not-eligible">Not Yet</span></span></div>`).join('');
+}
+async function removeFromHof(name){
+  if(!confirm(`Remove ${name} from HOF/Ring of Honor?`))return;
+  setDbStatus('saving');
+  const result=await apiPost(`/hof?action=remove&name=${encodeURIComponent(name)}`,{});
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Failed','amber');return;}
+  hofManualRemovals.add(name);delete hofManualInductions[name];
+  hofInductees=computeHOF(playerMap);renderAdminHof();
+  setDbStatus('saved');toast(`${name} removed`,'amber');
+}
+function openHofInductModal(){document.getElementById('hof-induct-overlay').classList.add('show');}
+async function manualHofInduct(){
+  const name=document.getElementById('hof-induct-name').value.trim();const tier=document.getElementById('hof-induct-tier').value;
+  if(!name)return toast('Enter a player name','amber');
+  setDbStatus('saving');
+  const result=await apiPost('/hof?action=induct',{name,tier,notes:document.getElementById('hof-induct-notes').value.trim()});
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Failed','amber');return;}
+  hofManualRemovals.delete(name);hofManualInductions[name]={tier};
+  if(!playerMap[name]){playerMap[name]={name,rings:0,allRFL:0,majorAwards:[],minorAwards:[],fmvpAwards:[],statLeads:[],seasonLog:[]};allPlayers.push(playerMap[name]);}
+  hofInductees=computeHOF(playerMap);document.getElementById('hof-induct-overlay').classList.remove('show');
+  renderAdminHof();setDbStatus('saved');toast(`${name} → ${tierLabel(tier)}`,'green');
+}
+function renderAdminRecords(){
+  document.getElementById('admin-records-tbody').innerHTML=Object.entries(records).map(([key,r])=>`<tr><td>${r.label}</td><td style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--gold-hi)">${r.value}</td><td>${r.holder}</td><td>${r.team}</td><td><button class="admin-btn" onclick="openRecordEdit('${key}')">Edit</button></td></tr>`).join('');
+}
+function openRecordEdit(key){const r=records[key];if(!r)return;document.getElementById('edit-rec-key').value=key;document.getElementById('edit-rec-value').value=r.value;document.getElementById('edit-rec-holder').value=r.holder;document.getElementById('edit-rec-team').value=r.team;document.getElementById('edit-record-overlay').classList.add('show');}
+async function saveRecordEdit(){
+  const key=document.getElementById('edit-rec-key').value;if(!records[key])return;
+  const updated={...records[key],value:parseInt(document.getElementById('edit-rec-value').value)||records[key].value,holder:document.getElementById('edit-rec-holder').value.trim()||records[key].holder,team:document.getElementById('edit-rec-team').value.trim()||records[key].team};
+  setDbStatus('saving');
+  const result=await apiPut(`/records?key=${key}`,updated);
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Failed','amber');return;}
+  records[key]=updated;
+  document.getElementById('edit-record-overlay').classList.remove('show');renderAdminRecords();
+  setDbStatus('saved');toast('Record updated','green');
+}
+function renderAdminAllStar(){
+  const tq=(document.getElementById('admin-allstar-search')?.value||'').trim().toLowerCase();
+  const data=Object.entries(allStarData).filter(([name])=>!tq||name.toLowerCase().includes(tq));
+  document.getElementById('admin-allstar-tbody').innerHTML=data.map(([name,d])=>`<tr><td>${name}</td><td style="text-align:center;color:var(--pink)">${d.apps}</td><td style="text-align:center;color:var(--gr)">${d.wins}</td><td style="text-align:center;color:var(--pur)">${d.mvps}</td><td style="text-align:center;color:var(--gold-hi)">${d.dunk}</td><td style="text-align:center;color:var(--bl)">${d.skills}</td><td style="text-align:center;color:var(--cy)">${d.threepoint}</td><td><button class="admin-btn" onclick="openAllStarEdit('${name}')">Edit</button></td></tr>`).join('');
+}
+function openAllStarEdit(name){const d=allStarData[name]||{apps:0,wins:0,mvps:0,dunk:0,skills:0,threepoint:0};document.getElementById('eas-player').value=name;document.getElementById('eas-apps').value=d.apps;document.getElementById('eas-wins').value=d.wins;document.getElementById('eas-mvps').value=d.mvps;document.getElementById('eas-dunk').value=d.dunk;document.getElementById('eas-skills').value=d.skills;document.getElementById('eas-threepoint').value=d.threepoint;document.getElementById('edit-allstar-overlay').classList.add('show');}
+async function saveAllStarEdit(){
+  const name=document.getElementById('eas-player').value;
+  const updated={apps:parseInt(document.getElementById('eas-apps').value)||0,wins:parseInt(document.getElementById('eas-wins').value)||0,mvps:parseInt(document.getElementById('eas-mvps').value)||0,dunk:parseInt(document.getElementById('eas-dunk').value)||0,skills:parseInt(document.getElementById('eas-skills').value)||0,threepoint:parseInt(document.getElementById('eas-threepoint').value)||0};
+  setDbStatus('saving');
+  const result=await apiPut(`/allstar?player=${encodeURIComponent(name)}`,updated);
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Failed','amber');return;}
+  allStarData[name]=updated;
+  document.getElementById('edit-allstar-overlay').classList.remove('show');rebuildData();updateHeroStats();renderAdminAllStar();
+  setDbStatus('saved');toast(`${name} updated`,'green');
+}
+async function addNewAllStar(){
+  const name=prompt('Player name:');if(!name?.trim())return;
+  setDbStatus('saving');
+  const result=await apiPost(`/allstar?player=${encodeURIComponent(name.trim())}`,{});
+  if(!result?.ok){setDbStatus('error');toast(result?.error||'Failed','amber');return;}
+  allStarData[name.trim()]={apps:0,wins:0,mvps:0,dunk:0,skills:0,threepoint:0};
+  setDbStatus('saved');renderAdminAllStar();openAllStarEdit(name.trim());
+}
+
+async function seedDB(){
+  if(!confirm('Seed DB with default data? This will only populate empty keys.'))return;
+  setDbStatus('saving');
+  const result=await apiPost('/seed',{});
+  if(!result?.ok){setDbStatus('error');toast('Seed failed','amber');return;}
+  // Reload
+  const data=await apiGet('/data');
+  if(data?.data){applyDBData(data.data);}
+  rebuildData();updateHeroStats();renderSeasons();renderAdminOverview();
+  setDbStatus('saved');toast('DB seeded with defaults','green');
+}
+
+function renderAdminAnalytics(){
+  const pl=Object.values(playerMap);const champMap={};seasons.forEach(s=>{champMap[s.champion]=(champMap[s.champion]||0)+1;});
+  const champSorted=Object.entries(champMap).sort((a,b)=>b[1]-a[1]);
+  const topMvp=[...pl].sort((a,b)=>b.majorAwards.filter(x=>x.award==='MVP').length-a.majorAwards.filter(x=>x.award==='MVP').length).slice(0,5);
+  const topFmvp=[...pl].sort((a,b)=>b.fmvpAwards.length-a.fmvpAwards.length).slice(0,5);
+  const topAllRpl=[...pl].sort((a,b)=>b.allRFL-a.allRFL).slice(0,5);
+  document.getElementById('analytics-content').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Most Championships</div><table class="allstar-leader-tbl">${champSorted.slice(0,5).map(([team,n],i)=>`<tr><td>${i+1}</td><td>${team}</td><td style="color:var(--gold-hi)">${n}</td></tr>`).join('')}</table></div>
+    <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Most Season MVPs</div><table class="allstar-leader-tbl">${topMvp.map((p,i)=>`<tr><td>${i+1}</td><td>${p.name}</td><td style="color:var(--gold-hi)">${p.majorAwards.filter(x=>x.award==='MVP').length}</td></tr>`).join('')}</table></div>
+    <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Most Finals MVPs</div><table class="allstar-leader-tbl">${topFmvp.map((p,i)=>`<tr><td>${i+1}</td><td>${p.name}</td><td style="color:var(--pur)">${p.fmvpAwards.length}</td></tr>`).join('')}</table></div>
+    <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px">Most All-RFL Selections</div><table class="allstar-leader-tbl">${topAllRpl.map((p,i)=>`<tr><td>${i+1}</td><td>${p.name}</td><td style="color:var(--bl)">${p.allRFL}</td></tr>`).join('')}</table></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// AUTH — calls /api/auth, gets token
+// ═══════════════════════════════════════════════
+function adminClick(){
+  if(isAdmin){logoutAdmin();return;}
+  document.getElementById('login-overlay').classList.add('show');
+  setTimeout(()=>document.getElementById('pw-input').focus(),80);
+}
+async function doLogin(){
+  const pw=document.getElementById('pw-input').value;
+  document.getElementById('login-err').classList.remove('show');
+  try{
+    const result=await fetch('/api/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})});
+    const data=await result.json();
+    if(data.ok&&data.token){
+      adminToken=data.token;
+      sessionStorage.setItem('rpl_admin_token',adminToken);
+      isAdmin=true;
+      document.getElementById('login-overlay').classList.remove('show');
+      document.getElementById('pw-input').value='';
+      document.getElementById('admin-bar').classList.add('on');
+      document.getElementById('admin-kc-lbl').textContent='Active';
+      showTab('admin',null);
+      toast('Admin mode activated','green',3000);
+    }else{
+      document.getElementById('login-err').classList.add('show');
+    }
+  }catch(e){
+    document.getElementById('login-err').classList.add('show');
+  }
+}
+function logoutAdmin(){
+  isAdmin=false;adminToken=null;
+  sessionStorage.removeItem('rpl_admin_token');
+  document.getElementById('admin-bar').classList.remove('on');
+  document.getElementById('admin-kc-lbl').textContent='Admin';
+  toast('Logged out','amber',2500);
+}
+
+// ═══════════════════════════════════════════════
+// KEYBOARD SHORTCUTS
+// ═══════════════════════════════════════════════
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeModal();closePlayerModal();
+    ['login-overlay','add-overlay','hof-induct-overlay','edit-record-overlay','edit-allstar-overlay'].forEach(id=>document.getElementById(id)?.classList.remove('show'));
+  }
+});
+
+// ═══════════════════════════════════════════════
+// INIT — load from /api/data, no Redis in browser
+// ═══════════════════════════════════════════════
+function applyDBData(data){
+  if(data.seasons&&Array.isArray(data.seasons)&&data.seasons.length>0)seasons=data.seasons;
+  if(data.records&&typeof data.records==='object')records=data.records;
+  if(data.allStar&&typeof data.allStar==='object')allStarData=data.allStar;
+  if(data.hofInductions&&typeof data.hofInductions==='object')hofManualInductions=data.hofInductions;
+  if(data.hofRemovals&&Array.isArray(data.hofRemovals))hofManualRemovals=new Set(data.hofRemovals);
+}
+
+async function init(){
+  try{
+    document.getElementById('load-text').textContent='Loading season data…';
+    const result=await apiGet('/data');
+    if(result?.ok&&result.data){
+      applyDBData(result.data);
+    }
+  }catch(e){
+    console.warn('Failed to load from API:',e);
+  }
+  // Check if stored admin session is valid
+  if(adminToken){
+    isAdmin=true;
+    document.getElementById('admin-bar').classList.add('on');
+    document.getElementById('admin-kc-lbl').textContent='Active';
+  }
+  rebuildData();
+  updateHeroStats();
+  renderSeasons();
+  const overlay=document.getElementById('load-overlay');
+  overlay.classList.add('done');
+  setTimeout(()=>overlay.remove(),500);
+}
+
+init();
+</script>
+</body>
+</html>
